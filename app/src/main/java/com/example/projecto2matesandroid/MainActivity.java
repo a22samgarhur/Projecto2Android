@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 if (usuariRespuesta.getEmail().equals("")) {
 
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), Aulas.class);
+                    Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     startActivity(intent);
                 }
 
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Usuari o contrasenya incorrecta", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), Aulas.class);
+                    Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     startActivity(intent);
                 }
             }
