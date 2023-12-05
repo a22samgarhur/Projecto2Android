@@ -7,8 +7,8 @@ import retrofit2.http.POST;
 
 public interface ApiServer {
 
-    /*@GET("/getLogin")
-    Call<usuario> getPreguntes();*/
+    @GET("/getLogin")
+    Call<Usuari> getLogin();
 
     @POST("/login")
     Call<Usuari> login(@Body Usuari usuari);

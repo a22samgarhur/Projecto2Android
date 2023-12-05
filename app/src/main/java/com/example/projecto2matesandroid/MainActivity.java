@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static ApiServer apiServer;
+
     EditText mailText;
     EditText passwordText;
     Usuari usuari = new Usuari();
@@ -35,10 +37,29 @@ public class MainActivity extends AppCompatActivity {
         passwordText = findViewById(R.id.editTextTextContrasenya);
 
         SharedPreferences settings = getSharedPreferences("InfoUsuari", 0);
+        mailText.setText(settings.getString("Email", "").toString());
 
-        mailText.setText(settings.getString("Email","").toString());
+        configurarApi();
+        Call<Usuari> call = getApiServer().getLogin();
+        call.enqueue(new Callback<Usuari>() {
+            @Override
+            public void onResponse(Call<Usuari> call, Response<Usuari> response) {
+                Usuari usuariRespuesta = response.body();
+                guardarDatos(usuariRespuesta);
+                if (usuariRespuesta.getEmail().equals("")) {
 
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), Aulas.class);
+                    startActivity(intent);
+                }
 
+            }
+
+            @Override
+            public void onFailure(Call<Usuari> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Error amb la conexio amb el server", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
@@ -49,24 +70,8 @@ public class MainActivity extends AppCompatActivity {
         usuari.setContrasena(passwordText.getText().toString());
         Log.d("user", usuari.getContrasena());
 
-        OkHttpClient client = new OkHttpClient();
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
-        builder.addInterceptor(new AddCookiesInterceptor(this));
-        builder.addInterceptor(new ReceivedCookiesInterceptor(this));
-        client = builder.build();
-
-
-        // Configurar Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        // Crear una instancia de la interfaz de la API
-        ApiServer apiServer = retrofit.create(ApiServer.class);
-
-        Call<Usuari> call = apiServer.login(usuari);
+        configurarApi();
+        Call<Usuari> call = getApiServer().login(usuari);
         call.enqueue(new Callback<Usuari>() {
             @Override
             public void onResponse(Call<Usuari> call, Response<Usuari> response) {
@@ -78,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(getApplicationContext(), Aulas.class);
                     startActivity(intent);
-
-
                 }
             }
 
@@ -92,14 +95,40 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void configurarApi() {
+        OkHttpClient client = new OkHttpClient();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        builder.addInterceptor(new AddCookiesInterceptor(this));
+        builder.addInterceptor(new ReceivedCookiesInterceptor(this));
+        client = builder.build();
+
+
+        // Configurar Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
+
+        // Crear una instancia de la interfaz de la API
+        apiServer = retrofit.create(ApiServer.class);
+
+
+    }
+
     //Funcion para guardar los datos que llegan del server en un SharedPreferences
     private void guardarDatos(Usuari respostaUsuari) {
-            SharedPreferences settings = getSharedPreferences("InfoUsuari", 0);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("idUsuari", respostaUsuari.getUsuariID());
-            editor.putString("Email", respostaUsuari.getEmail());
-            editor.commit();
+        SharedPreferences settings = getSharedPreferences("InfoUsuari", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("idUsuari", respostaUsuari.getUsuariID());
+        editor.putString("Email", respostaUsuari.getEmail());
+        editor.commit();
 
+    }
+
+    public static ApiServer getApiServer() {
+        return apiServer;
     }
 }
 
