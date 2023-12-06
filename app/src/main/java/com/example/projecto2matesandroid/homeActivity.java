@@ -1,5 +1,7 @@
 package com.example.projecto2matesandroid;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -15,13 +17,21 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecto2matesandroid.databinding.ActivityHomeBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class homeActivity extends AppCompatActivity {
+
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityHomeBinding binding;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,18 @@ public class homeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewHome);
+
+        List<ItemHome> items = new ArrayList<ItemHome>();
+        for (int i = 0; i < 30; i++) {
+            String name = "Samuel" + i;
+            String email = "Samuel" + i + "@gmail.com";
+            items.add(new ItemHome(name, email));
+        }
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyAdapterHome(getApplicationContext(),items));
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
