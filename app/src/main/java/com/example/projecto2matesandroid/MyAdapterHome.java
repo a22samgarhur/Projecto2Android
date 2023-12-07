@@ -27,9 +27,15 @@ public class MyAdapterHome extends RecyclerView.Adapter<MyViewHolderHome> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderHome holder, int position) {
+        holder.idAulaView.setText("ID: "+items.get(position).getId());
         holder.nameAulaView.setText(items.get(position).getName());
-        holder.idAulaView.setText(items.get(position).getId());
 
+
+    }
+    public void setItems(List<ItemHome> updatedItems) {
+        items.clear(); // Limpiar la lista actual
+        items.addAll(updatedItems); // Agregar los nuevos elementos
+        notifyDataSetChanged(); // Notificar al adaptador sobre los cambios
     }
 
     @Override

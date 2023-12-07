@@ -1,4 +1,6 @@
 package com.example.projecto2matesandroid;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -14,5 +16,5 @@ public interface ApiServer {
     Call<Usuari> login(@Body Usuari usuari);
 
     @GET("/getAulas")
-    Call<ItemHome> getAulas();
+    Call<List<ItemHome>> getAulas();
 }

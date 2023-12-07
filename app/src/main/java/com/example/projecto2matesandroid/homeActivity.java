@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,27 +58,41 @@ public class homeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
-        configurarApi();
-        Call<ItemHome> call = getApiServer().getAulas();
-        call.enqueue(new Callback<ItemHome>() {
-            @Override
-            public void onResponse(Call<ItemHome> call, Response<ItemHome> response) {
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
+        // Crear un adaptador inicial con una lista vacía
+        MyAdapterHome adapter = new MyAdapterHome(getApplicationContext(), items);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
-                // Usar Gson para convertir el JSON a una lista de ItemHome
-                Gson gson = new Gson();
-                items = gson.fromJson(String.valueOf(response.body()), new TypeToken<List<ItemHome>>() {
-                }.getType());
+
+        configurarApi();
+        Call<List<ItemHome>> call = getApiServer().getAulas();
+        call.enqueue(new Callback<List<ItemHome>>() {
+            @Override
+            public void onResponse(Call<List<ItemHome>> call, Response<List<ItemHome>> response) {
+
+                if (response.isSuccessful() && response.body() != null) {
+                    items = response.body();
+
+                    // Actualizar la lista de items
+                    adapter.setItems(items);
+
+                /*for (ItemHome item : items) {
+                    Log.d("ItemHome", "Name: " + item.getName() + ", Email: " + item.getId());
+                }*/
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                } else {
+                    Log.e("Error en respuesta", "Error en response de getAulas: " + response.message());
+                }
             }
 
             @Override
-            public void onFailure(Call<ItemHome> call, Throwable t) {
+            public void onFailure(Call<List<ItemHome>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir les aules", Toast.LENGTH_SHORT).show();
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapterHome(getApplicationContext(), items));
+
 
         /*RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
 
