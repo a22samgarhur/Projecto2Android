@@ -1,6 +1,5 @@
 package com.example.projecto2matesandroid;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -28,8 +27,8 @@ public class MyAdapterHome extends RecyclerView.Adapter<MyViewHolderHome> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderHome holder, int position) {
-        holder.nameView.setText(items.get(position).getName());
-        holder.emailView.setText(items.get(position).getEmail());
+        holder.nameAulaView.setText(items.get(position).getName());
+        holder.idAulaView.setText(items.get(position).getId());
 
     }
 

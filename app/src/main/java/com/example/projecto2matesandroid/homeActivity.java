@@ -1,15 +1,19 @@
 package com.example.projecto2matesandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.projecto2matesandroid.databinding.ActivityHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -33,7 +40,7 @@ public class homeActivity extends AppCompatActivity {
     private static ApiServer apiServer;
     private static final String BASE_URL = "http://10.0.2.2:3001";
     Usuari usuari = new Usuari();
-
+    List<ItemHome> items = new ArrayList<ItemHome>();
 
 
     @Override
@@ -49,7 +56,30 @@ public class homeActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+
+        configurarApi();
+        Call<ItemHome> call = getApiServer().getAulas();
+        call.enqueue(new Callback<ItemHome>() {
+            @Override
+            public void onResponse(Call<ItemHome> call, Response<ItemHome> response) {
+
+                // Usar Gson para convertir el JSON a una lista de ItemHome
+                Gson gson = new Gson();
+                items = gson.fromJson(String.valueOf(response.body()), new TypeToken<List<ItemHome>>() {
+                }.getType());
+            }
+
+            @Override
+            public void onFailure(Call<ItemHome> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir les aules", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyAdapterHome(getApplicationContext(), items));
+
+        /*RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
 
         List<ItemHome> items = new ArrayList<ItemHome>();
         for (int i = 0; i < 30; i++) {
@@ -59,7 +89,7 @@ public class homeActivity extends AppCompatActivity {
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapterHome(getApplicationContext(),items));
+        recyclerView.setAdapter(new MyAdapterHome(getApplicationContext(),items));*/
 
 
         /*RecyclerView recyclerView = findViewById(R.id.recyclerViewAlumnos);

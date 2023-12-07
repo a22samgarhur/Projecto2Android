@@ -7,12 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyViewHolderHome extends RecyclerView.ViewHolder {
-    TextView nameView;
-    TextView emailView;
+    TextView nameAulaView;
+    TextView idAulaView;
 
     public MyViewHolderHome(@NonNull View itemView) {
         super(itemView);
-        nameView=itemView.findViewById(R.id.nameView);
-        emailView=itemView.findViewById(R.id.emailView);
+        nameAulaView =itemView.findViewById(R.id.nameAulaView);
+        idAulaView =itemView.findViewById(R.id.idAulaView);
     }
 }
