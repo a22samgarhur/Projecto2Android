@@ -108,6 +108,7 @@ public class homeActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 DialogNuevaAula newFragment = new DialogNuevaAula();
                 newFragment.show(getSupportFragmentManager(), "botonEnviarFormulari");
             }

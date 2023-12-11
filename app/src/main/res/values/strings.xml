@@ -9,6 +9,9 @@
     <string name="Nova_aula">Afegir nova aula</string>
     <string name="Afegir">Afegir</string>
     <string name="Cancelar">Cancelar</string>
+    <string name="Nom">Nom</string>
+    <string name="Codi">Codi</string>
+    <string name="AfegirAula">Afegir nova aula</string>
 
 
 </resources>
