@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Usuari> call, Response<Usuari> response) {
                 Usuari usuariRespuesta = response.body();
                 Log.e("Usuari", "onResponse: "+usuariRespuesta.getEmail());
-                //guardarDatos(usuariRespuesta);
+                guardarDatos(usuariRespuesta);
                 if (usuariRespuesta.getEmail().equals("")) {
                     Toast.makeText(getApplicationContext(), "Usuari o contrasenya incorrecta", Toast.LENGTH_SHORT).show();
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     private void guardarDatos(Usuari respostaUsuari) {
         SharedPreferences settings = getSharedPreferences("InfoUsuari", 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("idUsuari", respostaUsuari.getUsuariID());
+        editor.putString("idProfesor", respostaUsuari.getUsuariID());
         editor.putString("Email", respostaUsuari.getEmail());
         editor.commit();
 
