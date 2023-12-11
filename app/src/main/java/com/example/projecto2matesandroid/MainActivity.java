@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public void loquearse(View view) {
 
         usuari.setEmail(mailText.getText().toString());
-        usuari.setContrasena(passwordText.getText().toString());
+        usuari.setContrasenaCifrada(passwordText.getText().toString());
         Log.d("user", usuari.getContrasena());
 
         configurarApi();

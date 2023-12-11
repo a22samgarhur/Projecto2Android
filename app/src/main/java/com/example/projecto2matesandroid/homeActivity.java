@@ -57,12 +57,24 @@ public class homeActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
         // Crear un adaptador inicial con una lista vacía
         MyAdapterHome adapter = new MyAdapterHome(getApplicationContext(), items);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        // Establecer el listener para manejar los clics en el RecyclerView
+        adapter.setOnItemClickListener(new MyAdapterHome.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                // Aquí manejas la navegación al SecondFragment
+                NavController navController = Navigation.findNavController(homeActivity.this, R.id.nav_host_fragment_content_home);
+                navController.navigate(R.id.action_FirstFragment_to_SecondFragment);
+            }
+        });
 
 
         configurarApi();
@@ -182,4 +194,6 @@ public class homeActivity extends AppCompatActivity {
     public static ApiServer getApiServer() {
         return apiServer;
     }
+
+
 }

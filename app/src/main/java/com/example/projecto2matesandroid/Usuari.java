@@ -1,5 +1,5 @@
 package com.example.projecto2matesandroid;
-
+import org.apache.commons.codec.digest.DigestUtils;
 public class Usuari {
 
     private String id;
@@ -68,5 +68,9 @@ public class Usuari {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public void setContrasenaCifrada(String password){
+        this.contrasena = DigestUtils.md5Hex(password).toUpperCase();
     }
 }

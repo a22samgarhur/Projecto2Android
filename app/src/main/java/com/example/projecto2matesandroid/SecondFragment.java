@@ -3,10 +3,13 @@ package com.example.projecto2matesandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -63,6 +66,29 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        // Obtener la actividad que contiene este fragmento
+        AppCompatActivity activity = (AppCompatActivity) requireActivity();
+
+        // Obtener la Toolbar de la actividad
+        androidx.appcompat.widget.Toolbar toolbar = activity.findViewById(R.id.toolbar);
+
+        // Verificar si la Toolbar se encontró correctamente antes de configurar el OnClickListener
+        if (toolbar != null) {
+            // Deshabilitar la funcionalidad de retroceso en la barra de herramientas
+            toolbar.setNavigationOnClickListener(null);
+
+            // Manejar el botón de retroceso en el fragmento
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(requireContext(), homeActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
+
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,12 +98,21 @@ public class SecondFragment extends Fragment {
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);*/
             }
         });
+
+
     }
+
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
+
+
+
+
 
 }
