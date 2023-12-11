@@ -105,37 +105,11 @@ public class homeActivity extends AppCompatActivity {
         });
 
 
-
-        /*RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
-
-        List<ItemHome> items = new ArrayList<ItemHome>();
-        for (int i = 0; i < 30; i++) {
-            String name = "Samuel" + i;
-            String email = "Samuel" + i + "@gmail.com";
-            items.add(new ItemHome(name, email));
-        }
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapterHome(getApplicationContext(),items));*/
-
-
-        /*RecyclerView recyclerView = findViewById(R.id.recyclerViewAlumnos);
-        List<ItemAlumno> alumnes = new ArrayList<ItemAlumno>();
-        for (int i = 0; i < 30; i++) {
-            String nom = "Mario" + i;
-            String nivell = "Nivell " + i + "";
-            alumnes.add(new ItemAlumno(nom,nivell,R.drawable.shrek));
-        }
-
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapterAlumno(getApplicationContext(),alumnes));*/
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                DialogNuevaAula newFragment = new DialogNuevaAula();
+                newFragment.show(getSupportFragmentManager(), "botonEnviarFormulari");
             }
         });
     }
