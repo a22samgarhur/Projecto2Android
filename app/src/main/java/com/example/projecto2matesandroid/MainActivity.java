@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Usuari> call, Response<Usuari> response) {
                 Usuari usuariRespuesta = response.body();
-                guardarDatos(usuariRespuesta);
+                Log.e("Usuari", "onResponse: "+usuariRespuesta.getEmail());
+                //guardarDatos(usuariRespuesta);
                 if (usuariRespuesta.getEmail().equals("")) {
                     Toast.makeText(getApplicationContext(), "Usuari o contrasenya incorrecta", Toast.LENGTH_SHORT).show();
 

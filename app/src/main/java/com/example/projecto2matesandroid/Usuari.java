@@ -5,21 +5,26 @@ public class Usuari {
     private String id;
     private String usuariID;
     private String nickname;
+    private String surname;
     private String email;
+    private String image;
     private String contrasena;
 
     public Usuari(){
 
     }
 
-
-    public Usuari(String id, String usuariID, String nickname, String email, String password) {
+    public Usuari(String id, String usuariID, String nickname, String surname, String email, String image, String contrasena) {
         this.id = id;
         this.usuariID = usuariID;
         this.nickname = nickname;
+        this.surname = surname;
         this.email = email;
-        this.contrasena = password;
+        this.image = image;
+        this.contrasena = contrasena;
     }
+
+
 
     public Usuari(String id, String usuariID, String email) {
         this.id = id;
@@ -28,7 +33,21 @@ public class Usuari {
 
     }
 
+    public String getSurname() {
+        return surname;
+    }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getId() {
         return id;

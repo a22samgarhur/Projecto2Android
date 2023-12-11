@@ -12,7 +12,7 @@ public interface ApiServer {
     @GET("/getLogin")
     Call<Usuari> getLogin();
 
-    @POST("/login")
+    @POST("/loginandroid")
     Call<Usuari> login(@Body Usuari usuari);
 
     @GET("/getAulas")
