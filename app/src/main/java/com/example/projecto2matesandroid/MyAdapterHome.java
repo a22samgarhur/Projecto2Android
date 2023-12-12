@@ -42,7 +42,7 @@ public class MyAdapterHome extends RecyclerView.Adapter<MyViewHolderHome> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderHome holder, int position) {
-        holder.idAulaView.setText("ID: " + items.get(position).getId());
+        holder.idAulaView.setText("Codi d'acces: " + items.get(position).getAccess_code());
         holder.nameAulaView.setText(items.get(position).getName());
 
         // Asignar clic al elemento del RecyclerView
