@@ -1,6 +1,9 @@
 package com.example.projecto2matesandroid;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import com.example.projecto2matesandroid.databinding.ActivityHomeBinding;
@@ -34,6 +37,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class homeActivity extends AppCompatActivity {
+
+
+
+    RecyclerView recyclerView;
+    MyAdapterHome adapter;
     private AppBarConfiguration appBarConfiguration;
     private ActivityHomeBinding binding;
     private static ApiServer apiServer;
@@ -58,9 +66,9 @@ public class homeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewAulas);
+        recyclerView = findViewById(R.id.recyclerViewAulas);
         // Crear un adaptador inicial con una lista vacía
-        MyAdapterHome adapter = new MyAdapterHome(getApplicationContext(), items);
+        adapter = new MyAdapterHome(getApplicationContext(), items);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
@@ -74,33 +82,13 @@ public class homeActivity extends AppCompatActivity {
             }
         });
 
+        // Registrar el BroadcastReceiver
+        IntentFilter filter = new IntentFilter(DialogNuevaAula.ACTION_AULACREADA);
+        registerReceiver(aulaCreatedReceiver, filter);
+
 
         configurarApi();
-        Call<List<ItemHome>> call = getApiServer().getAulas();
-        call.enqueue(new Callback<List<ItemHome>>() {
-            @Override
-            public void onResponse(Call<List<ItemHome>> call, Response<List<ItemHome>> response) {
-
-                if (response.isSuccessful() && response.body() != null) {
-                    items = response.body();
-
-                    // Actualizar la lista de items
-                    adapter.setItems(items);
-
-                /*for (ItemHome item : items) {
-                    Log.d("ItemHome", "Name: " + item.getName() + ", Email: " + item.getId());
-                }*/
-                    recyclerView.getAdapter().notifyDataSetChanged();
-                } else {
-                    Log.e("Error en respuesta", "Error en response de getAulas: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ItemHome>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir les aules", Toast.LENGTH_SHORT).show();
-            }
-        });
+        actualizarListaAulas();
 
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +100,16 @@ public class homeActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Funcion para recibir el Broadcast de DialogNuevaAula,poder ver si hay cambios y actualizar la lista de aulas
+    private BroadcastReceiver aulaCreatedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() != null && intent.getAction().equals(DialogNuevaAula.ACTION_AULACREADA)) {
+                actualizarListaAulas();
+            }
+        }
+    };
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -162,11 +160,45 @@ public class homeActivity extends AppCompatActivity {
 
     }
 
+    public void actualizarListaAulas() {
+        Call<List<ItemHome>> call = getApiServer().getAulas();
+        call.enqueue(new Callback<List<ItemHome>>() {
+            @Override
+            public void onResponse(Call<List<ItemHome>> call, Response<List<ItemHome>> response) {
+
+                if (response.isSuccessful() && response.body() != null) {
+                    items = response.body();
+
+                    // Actualizar la lista de items
+                    adapter.setItems(items);
+
+                /*for (ItemHome item : items) {
+                    Log.d("ItemHome", "Name: " + item.getName() + ", Email: " + item.getId());
+                }*/
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                } else {
+                    Log.e("Error en respuesta", "Error en response de getAulas: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ItemHome>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir les aules", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
 
 
     public static ApiServer getApiServer() {
         return apiServer;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(aulaCreatedReceiver);
     }
 
 

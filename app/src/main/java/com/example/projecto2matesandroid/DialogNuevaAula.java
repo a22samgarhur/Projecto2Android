@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DialogNuevaAula extends DialogFragment {
+
+
+    public static final String ACTION_AULACREADA = "com.example.projecto2matesandroid.AULA_CREADA";
 
     private Context applicationContext;
 
@@ -39,6 +43,10 @@ public class DialogNuevaAula extends DialogFragment {
                 .setPositiveButton(R.string.Afegir, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         crearAula();
+                        //Intent para pasar a la homeActivity un Broadcast
+                        Intent intent = new Intent();
+                        intent.setAction(ACTION_AULACREADA);
+                        requireActivity().sendBroadcast(intent);
                     }
                 })
                 .setNegativeButton(R.string.Cancelar, new DialogInterface.OnClickListener() {
