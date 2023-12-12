@@ -2,6 +2,7 @@ package com.example.projecto2matesandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,8 +27,9 @@ public class SecondFragment extends Fragment {
     private List<ItemAlumno> alumnesList = new ArrayList<>();
     private MyAdapterAlumno adapter;
     private FragmentSecondBinding binding;
+    String aulaID;
     public SecondFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -35,6 +37,15 @@ public class SecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+
+
+        if (getArguments() != null) {
+            aulaID = getArguments().getString("aulaId");
+            Log.e("Aula ID", "Aula id: "+aulaID );
+
+        }
+
+
 
         binding = FragmentSecondBinding.inflate(inflater, container, false); // Inicializar el binding
 

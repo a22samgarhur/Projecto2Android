@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.projecto2matesandroid.databinding.ActivityHomeBinding;
@@ -46,7 +47,7 @@ public class homeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private static ApiServer apiServer;
     private static final String BASE_URL = "http://10.0.2.2:3001";
-    Usuari usuari = new Usuari();
+    
     List<ItemHome> items = new ArrayList<ItemHome>();
 
 
@@ -76,9 +77,15 @@ public class homeActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new MyAdapterHome.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                // Aquí manejas la navegación al SecondFragment
+
+                String aulaId = items.get(position).getId();
+
+                //Para Bundle pasar elementos al secondfragment
+                Bundle bundle = new Bundle();
+                bundle.putString("aulaId", aulaId);
+
                 NavController navController = Navigation.findNavController(homeActivity.this, R.id.nav_host_fragment_content_home);
-                navController.navigate(R.id.action_FirstFragment_to_SecondFragment);
+                navController.navigate(R.id.action_FirstFragment_to_SecondFragment,bundle);
             }
         });
 
@@ -89,6 +96,7 @@ public class homeActivity extends AppCompatActivity {
 
         configurarApi();
         actualizarListaAulas();
+       
 
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +175,7 @@ public class homeActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null) {
                     items = response.body();
+                    
 
                     // Actualizar la lista de items
                     adapter.setItems(items);
@@ -186,7 +195,7 @@ public class homeActivity extends AppCompatActivity {
             }
         });
 
-    }
+    }  
 
 
 
