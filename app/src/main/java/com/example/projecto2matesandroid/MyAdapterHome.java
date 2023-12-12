@@ -51,9 +51,8 @@ public class MyAdapterHome extends RecyclerView.Adapter<MyViewHolderHome> {
             public void onClick(View v) {
                 if (onItemClickListener != null) {
                     // Llamar al método del listener pasando la posición del elemento clicado
-
                     onItemClickListener.onItemClick(position);
-                    Log.e("Boton", "Boton pulsado: "+items.get(position).getName());
+                    //Log.e("Boton", "Boton pulsado: "+items.get(position).getName());
                 }
             }
         });
