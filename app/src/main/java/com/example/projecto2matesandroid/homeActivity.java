@@ -34,8 +34,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class homeActivity extends AppCompatActivity {
-
-
     private AppBarConfiguration appBarConfiguration;
     private ActivityHomeBinding binding;
     private static ApiServer apiServer;
@@ -162,8 +160,9 @@ public class homeActivity extends AppCompatActivity {
         // Crear una instancia de la interfaz de la API
         apiServer = retrofit.create(ApiServer.class);
 
-
     }
+
+
 
 
     public static ApiServer getApiServer() {

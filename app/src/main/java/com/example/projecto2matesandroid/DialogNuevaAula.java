@@ -4,6 +4,7 @@ import static com.example.projecto2matesandroid.MainActivity.getApiServer;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,20 +21,18 @@ import retrofit2.Response;
 
 public class DialogNuevaAula extends DialogFragment {
 
+    private Context applicationContext;
+
     Aula aula = new Aula();
     EditText nom;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the Builder class for convenient dialog construction
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-
         View view = inflater.inflate(R.layout.dialog_aulanueva, null);
-
-
         nom = view.findViewById(R.id.novaAulaNom);
 
         builder.setView(view)
@@ -51,6 +50,12 @@ public class DialogNuevaAula extends DialogFragment {
         return builder.create();
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        applicationContext = context.getApplicationContext();
+    }
+
     public void crearAula() {
 
         aula.setName(nom.getText().toString());
@@ -62,12 +67,14 @@ public class DialogNuevaAula extends DialogFragment {
         call.enqueue(new Callback<Aula>() {
             @Override
             public void onResponse(Call<Aula> call, Response<Aula> response) {
+                Log.e("Crear aula response", "onResponse: "+response );
+                Toast.makeText(applicationContext, "Aula creada correctament", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call<Aula> call, Throwable t) {
-                Toast.makeText(requireActivity().getApplicationContext(), "Error amb la conexio amb el server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, "No s'ha pogut crear l'aula, torni a intentar", Toast.LENGTH_SHORT).show();
             }
         });
 
