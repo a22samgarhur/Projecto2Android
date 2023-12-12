@@ -6,6 +6,14 @@ public class Aula {
     private String name;
     private String access_code;
 
+    public Aula() {
+
+    }
+
+    public Aula(String name) {
+        this.name = name;
+    }
+
     public Aula(String id, String professor_id, String name, String access_code) {
         this.id = id;
         this.professor_id = professor_id;

@@ -17,4 +17,7 @@ public interface ApiServer {
 
     @GET("/getAulas")
     Call<List<ItemHome>> getAulas();
+
+    @POST("/crearAula")
+    Call<Aula> crearAula(@Body Aula aula);
 }
