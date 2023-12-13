@@ -1,7 +1,9 @@
 package com.example.projecto2matesandroid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import java.util.List;
 public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
     Context context;
     List<ItemAlumno> alumnos;
+    MyAdapterHome.OnItemClickListener onItemClickListener;
 
     public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos) {
         this.context = context;
@@ -27,7 +30,7 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolderAlumno holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolderAlumno holder, @SuppressLint("RecyclerView") int position) {
         holder.nomView.setText(alumnos.get(position).getName()+" "+alumnos.get(position).getSurname());
         holder.nivellView.setText(alumnos.get(position).getEmail());
 
@@ -39,6 +42,18 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
                 .placeholder(R.drawable.cargando) // Placeholder en caso de que la imagen tarde en cargar
                 .error(R.drawable.error_imagen) // Imagen de error si falla la carga
                 .into(holder.imatgeView);
+
+        // Asignar clic al elemento del RecyclerView
+        holder.alumeslayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    // Llamar al método del listener pasando la posición del elemento clicado
+                    onItemClickListener.onItemClick(position);
+                    //Log.e("Boton", "Boton pulsado: "+items.get(position).getName());
+                }
+            }
+        });
     }
 
     @Override
@@ -51,4 +66,16 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
         alumnos.addAll(updatedItems); // Agregar los nuevos elementos
         notifyDataSetChanged(); // Notificar al adaptador sobre los cambios
     }
+
+    public void setOnItemClickListener(MyAdapterHome.OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
+    // Interfaz para manejar los clics en el RecyclerView
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+
+
 }

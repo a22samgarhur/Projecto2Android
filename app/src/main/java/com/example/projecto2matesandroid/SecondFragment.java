@@ -11,11 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,6 +74,8 @@ public class SecondFragment extends Fragment {
         // Notificar al adaptador sobre los cambios en los datos
         adapter.notifyDataSetChanged();
 
+
+
         return view;
 
     }
@@ -84,7 +88,7 @@ public class SecondFragment extends Fragment {
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
 
         // Obtener la Toolbar de la actividad
-        androidx.appcompat.widget.Toolbar toolbar = activity.findViewById(R.id.toolbar);
+        Toolbar toolbar = activity.findViewById(R.id.toolbar);
 
         // Verificar si la Toolbar se encontró correctamente antes de configurar el OnClickListener
         if (toolbar != null) {
@@ -98,6 +102,16 @@ public class SecondFragment extends Fragment {
                 }
             });
         }
+
+        adapter.setOnItemClickListener(new MyAdapterHome.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+                Intent intent = new Intent(requireContext(), homeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
