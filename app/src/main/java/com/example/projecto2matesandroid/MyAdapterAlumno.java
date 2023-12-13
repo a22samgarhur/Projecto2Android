@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
@@ -26,13 +28,27 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderAlumno holder, int position) {
-        holder.nomView.setText(alumnos.get(position).getNom());
-        holder.nivellView.setText(alumnos.get(position).getNivel());
-        holder.imatgeView.setImageResource(alumnos.get(position).getImagen());
+        holder.nomView.setText(alumnos.get(position).getName()+" "+alumnos.get(position).getSurname());
+        holder.nivellView.setText(alumnos.get(position).getEmail());
+
+        String imageUrl = "http://10.0.2.2:3001/imagen/"+alumnos.get(position).getImage();
+
+        // Utiliza Glide para cargar la imagen desde la URL
+        Glide.with(holder.itemView.getContext())
+                .load(imageUrl)
+                .placeholder(R.drawable.cargando) // Placeholder en caso de que la imagen tarde en cargar
+                .error(R.drawable.error_imagen) // Imagen de error si falla la carga
+                .into(holder.imatgeView);
     }
 
     @Override
     public int getItemCount() {
         return alumnos.size();
+    }
+
+    public void setItems(List<ItemAlumno> updatedItems) {
+        alumnos.clear(); // Limpiar la lista actual
+        alumnos.addAll(updatedItems); // Agregar los nuevos elementos
+        notifyDataSetChanged(); // Notificar al adaptador sobre los cambios
     }
 }

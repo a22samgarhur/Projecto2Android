@@ -18,6 +18,10 @@ public interface ApiServer {
     @GET("/getAulas")
     Call<List<ItemHome>> getAulas();
 
+    @GET("/consultarUsuaris")
+    Call<List<ItemAlumno>> getAlumno(@Query("id")String aulaID);
+
+
     @POST("/crearAula")
     Call<Aula> crearAula(@Body Aula aula);
 }

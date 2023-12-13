@@ -1,41 +1,118 @@
 package com.example.projecto2matesandroid;
 
 public class ItemAlumno {
-    String nom;
-    String nivel;
-    int imagen;
+    String id;
+    String idAlumne;
+    String name;
+    String contrasena;
+    String surname;
+    String email;
+    String rank;
+    String lvl;
+    String image;
+    String id_classroom;
 
-    public ItemAlumno(String nom, String nivel, int imagen) {
-        this.nom = nom;
-        this.nivel = nivel;
-        this.imagen = imagen;
+    public ItemAlumno(String id, String idAlumne, String name, String contrasena, String surname, String email, String rank, String lvl, String image, String id_classroom) {
+        this.id = id;
+        this.idAlumne = idAlumne;
+        this.name = name;
+        this.contrasena = contrasena;
+        this.surname = surname;
+        this.email = email;
+        this.rank = rank;
+        this.lvl = lvl;
+        this.image = image;
+        this.id_classroom = id_classroom;
     }
-    public ItemAlumno(String nom, String nivel) {
-        this.nom = nom;
-        this.nivel = nivel;
+    public ItemAlumno(String name, String lvl, String image) {
+        this.name = name;
+        this.lvl = lvl;
+        this.image = image;
     }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public ItemAlumno(String name, String lvl) {
+        this.name = name;
+        this.lvl = lvl;
     }
 
-    public int getImagen() {
-        return imagen;
+    public String getId() {
+        return id;
     }
 
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdAlumne() {
+        return idAlumne;
+    }
+
+    public void setIdAlumne(String idAlumne) {
+        this.idAlumne = idAlumne;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getId_classroom() {
+        return id_classroom;
+    }
+
+    public void setId_classroom(String id_classroom) {
+        this.id_classroom = id_classroom;
+    }
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(String lvl) {
+        this.lvl = lvl;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

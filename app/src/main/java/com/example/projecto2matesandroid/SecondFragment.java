@@ -1,5 +1,8 @@
 package com.example.projecto2matesandroid;
 
+import static com.example.projecto2matesandroid.MainActivity.getApiServer;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -21,18 +25,22 @@ import com.example.projecto2matesandroid.databinding.FragmentSecondBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SecondFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<ItemAlumno> alumnesList = new ArrayList<>();
     private MyAdapterAlumno adapter;
     private FragmentSecondBinding binding;
+    private Context applicationContext;
+    List<ItemAlumno> alumnes = new ArrayList<ItemAlumno>();
     String aulaID;
     public SecondFragment() {
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,13 +67,7 @@ public class SecondFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-
-        // Agregar datos al RecyclerView
-        for (int i = 0; i < 30; i++) {
-            String nom = "Mario" + i;
-            String nivell = "Nivell " + i + "";
-            alumnesList.add(new ItemAlumno(nom, nivell, R.drawable.shrek));
-        }
+        actualizarListaAlumnos();
 
         // Notificar al adaptador sobre los cambios en los datos
         adapter.notifyDataSetChanged();
@@ -86,8 +88,6 @@ public class SecondFragment extends Fragment {
 
         // Verificar si la Toolbar se encontró correctamente antes de configurar el OnClickListener
         if (toolbar != null) {
-            // Deshabilitar la funcionalidad de retroceso en la barra de herramientas
-            toolbar.setNavigationOnClickListener(null);
 
             // Manejar el botón de retroceso en el fragmento
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -113,17 +113,43 @@ public class SecondFragment extends Fragment {
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        applicationContext = context.getApplicationContext();
+    }
 
+    public void actualizarListaAlumnos() {
+        Call<List<ItemAlumno>> call = getApiServer().getAlumno(aulaID);
+        call.enqueue(new Callback<List<ItemAlumno>>() {
+            @Override
+            public void onResponse(Call<List<ItemAlumno>> call, Response<List<ItemAlumno>> response) {
+
+                if (response.isSuccessful() && response.body() != null) {
+                    alumnes = response.body();
+
+                    // Actualizar la lista de items
+                    adapter.setItems(alumnes);
+
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                } else {
+                    Log.e("Error en respuesta", "Error en response de getAlumnos: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ItemAlumno>> call, Throwable t) {
+                Toast.makeText(applicationContext, "No s´ha pogut obtenir els alumnes", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
-
-
-
 
 
 }
