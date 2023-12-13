@@ -17,8 +17,7 @@ public class infoAlumno extends AppCompatActivity {
 
 
     public void tornar(View view) {
-        NavController navController = Navigation.findNavController(infoAlumno.this, R.id.nav_host_fragment_content_home);
-        navController.navigate(R.id.action_FirstFragment_to_SecondFragment);
+        finish();
 
     }
 }
