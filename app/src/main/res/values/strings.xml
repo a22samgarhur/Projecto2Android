@@ -13,6 +13,8 @@
     <string name="Codi">Codi</string>
     <string name="Codi_acces">Codi d\'acces</string>
     <string name="AfegirAula">Afegir nova aula</string>
+    <string name="infoAlumne">Informacio alumne</string>
+    <string name="Tornar">Tornar</string>
 
 
 </resources>

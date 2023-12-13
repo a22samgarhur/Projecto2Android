@@ -96,7 +96,6 @@ public class homeActivity extends AppCompatActivity {
 
         configurarApi();
         actualizarListaAulas();
-       
 
 
         binding.fab.setOnClickListener(new View.OnClickListener() {

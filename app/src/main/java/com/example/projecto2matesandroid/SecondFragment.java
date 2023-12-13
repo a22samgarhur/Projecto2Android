@@ -107,22 +107,14 @@ public class SecondFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
 
-                Intent intent = new Intent(requireContext(), homeActivity.class);
+                Intent intent = new Intent(requireContext(), infoAlumno.class);
                 startActivity(intent);
             }
         });
 
 
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), homeActivity.class);
-                startActivity(intent);
-                /*NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);*/
-            }
-        });
+
 
 
     }
