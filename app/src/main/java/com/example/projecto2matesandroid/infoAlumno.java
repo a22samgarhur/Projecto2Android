@@ -5,6 +5,8 @@ import static com.example.projecto2matesandroid.MainActivity.getApiServer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,8 +30,10 @@ public class infoAlumno extends AppCompatActivity {
     ItemAlumno alumno = new ItemAlumno();
     public static final String EXTRA_MESSAGE ="com.example.android.twoactivities.extra.MESSAGE";
     String idAlumne;
-    TextView nom,Email,aula,nivell,rang;
-    ImageView foto;
+    RecyclerView recyclerViewHistorial;
+    MyAdapterHistorial adapter;
+
+    List<ItemHistorial> historials = new ArrayList<ItemHistorial>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,18 @@ public class infoAlumno extends AppCompatActivity {
         Intent intent = getIntent();
         idAlumne = intent.getStringExtra(SecondFragment.EXTRA_MESSAGE);
         //Log.e("ID alumne", "ID Alumne pasado: "+idAlumne );
+
+        recyclerViewHistorial=findViewById(R.id.recyclerviewInfoAlumeHistorial);
+
+        historials.add(new ItemHistorial("14-03-1988","Exercici 1, Pregunta 3","Correcta"));
+
+
+
+
+        // Crear un adaptador inicial con una lista vacía
+        adapter = new MyAdapterHistorial(getApplicationContext(), historials);
+        recyclerViewHistorial.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewHistorial.setAdapter(adapter);
 
         cogerDatosAlumno();
 
