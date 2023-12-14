@@ -23,21 +23,21 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="20dp"
         android:onClick="tornar"
         android:text="@string/Tornar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerviewInfoAlumeHistorial" />
 
     <ScrollView
         android:id="@+id/scrollViewInfoAlumno"
-        android:layout_width="401dp"
-        android:layout_height="190dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="399dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="12dp"
         android:background="#38D1E4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewInfoAlumeTitol">
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="Nom complet"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -73,8 +73,8 @@
                 android:id="@+id/textViewInfoAlumneAula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
                 android:text="Aula"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -85,8 +85,8 @@
                 android:id="@+id/textViewInfoAlumneNivell"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="40dp"
                 android:text="Nivell"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -97,20 +97,20 @@
                 android:id="@+id/textViewInfoAlumneRang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
                 android:text="Rang"
                 android:textColor="#050505"
                 android:textSize="20dp"
                 app:layout_constraintStart_toEndOf="@+id/imageViewInfoAlumne"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewInfoAlumneAula" />
 
             <TextView
                 android:id="@+id/textViewInfoAlumneEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Email"
                 android:textColor="#0C0C0C"
                 android:textSize="20dp"
@@ -118,6 +118,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewInfoAlumneNom" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
     <TextView
         android:id="@+id/textViewInfoAlumeHistorial"
         android:layout_width="wrap_content"
@@ -132,8 +133,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewInfoAlumeHistorial"
-        android:layout_width="399dp"
-        android:layout_height="181dp"
+        android:layout_width="395dp"
+        android:layout_height="256dp"
         android:layout_marginTop="60dp"
         android:background="#38D1E4"
         app:layout_constraintEnd_toEndOf="parent"
