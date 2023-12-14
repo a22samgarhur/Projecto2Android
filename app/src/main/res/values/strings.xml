@@ -15,6 +15,8 @@
     <string name="AfegirAula">Afegir nova aula</string>
     <string name="infoAlumne">Informacio alumne</string>
     <string name="Tornar">Tornar</string>
+    <string name="Nivell">Nivell</string>
+    <string name="Rang">Rang</string>
 
 
 </resources>

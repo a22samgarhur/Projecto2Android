@@ -11,6 +11,22 @@ public class ItemAlumno {
     String lvl;
     String image;
     String id_classroom;
+    String nom_aula;
+
+
+    public ItemAlumno(String id, String idAlumne, String name, String contrasena, String surname, String email, String rank, String lvl, String image, String id_classroom, String nom_aula) {
+        this.id = id;
+        this.idAlumne = idAlumne;
+        this.name = name;
+        this.contrasena = contrasena;
+        this.surname = surname;
+        this.email = email;
+        this.rank = rank;
+        this.lvl = lvl;
+        this.image = image;
+        this.id_classroom = id_classroom;
+        this.nom_aula = nom_aula;
+    }
 
     public ItemAlumno(String id, String idAlumne, String name, String contrasena, String surname, String email, String rank, String lvl, String image, String id_classroom) {
         this.id = id;
@@ -117,5 +133,13 @@ public class ItemAlumno {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getNom_aula() {
+        return nom_aula;
+    }
+
+    public void setNom_aula(String nom_aula) {
+        this.nom_aula = nom_aula;
     }
 }
