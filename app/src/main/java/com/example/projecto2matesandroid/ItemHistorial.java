@@ -4,16 +4,14 @@ public class ItemHistorial {
 
     String Hora;
     String informacion;
-    String correcta;
 
     public ItemHistorial() {
 
     }
 
-    public ItemHistorial(String hora, String informacion, String correcta) {
+    public ItemHistorial(String hora, String informacion) {
         Hora = hora;
         this.informacion = informacion;
-        this.correcta = correcta;
     }
 
     public String getHora() {
@@ -32,11 +30,5 @@ public class ItemHistorial {
         this.informacion = informacion;
     }
 
-    public String getCorrecta() {
-        return correcta;
-    }
 
-    public void setCorrecta(String correcta) {
-        this.correcta = correcta;
-    }
 }

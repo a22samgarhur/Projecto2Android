@@ -14,6 +14,5 @@ public class MyViewHolderHistorial extends RecyclerView.ViewHolder {
         super(itemView);
         horaView=itemView.findViewById(R.id.textViewHoraHistorial);
         informacionView=itemView.findViewById(R.id.textViewInfoHistorial);
-        correctaView=itemView.findViewById(R.id.textViewCorrectaHistorial);
     }
 }

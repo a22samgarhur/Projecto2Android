@@ -29,7 +29,6 @@ public class MyAdapterHistorial extends RecyclerView.Adapter<MyViewHolderHistori
     public void onBindViewHolder(@NonNull MyViewHolderHistorial holder, int position) {
         holder.horaView.setText(items.get(position).getHora());
         holder.informacionView.setText(items.get(position).getInformacion());
-        holder.correctaView.setText(items.get(position).getCorrecta());
 
     }
 
