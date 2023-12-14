@@ -19,7 +19,7 @@ public interface ApiServer {
     Call<List<ItemHome>> getAulas();
 
     @GET("/consultarUsuaris")
-    Call<List<ItemAlumno>> getAlumno(@Query("id")String aulaID);
+    Call<List<ItemAlumno>> getAlumnos(@Query("id")String aulaID);
 
 
     @POST("/crearAula")

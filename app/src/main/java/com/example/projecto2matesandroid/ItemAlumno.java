@@ -33,6 +33,9 @@ public class ItemAlumno {
         this.name = name;
         this.lvl = lvl;
     }
+    public ItemAlumno() {
+
+    }
 
     public String getId() {
         return id;

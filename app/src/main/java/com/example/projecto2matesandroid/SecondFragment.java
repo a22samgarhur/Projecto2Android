@@ -33,6 +33,8 @@ import retrofit2.Response;
 
 public class SecondFragment extends Fragment {
 
+    public static final String EXTRA_MESSAGE ="com.example.android.twoactivities.extra.MESSAGE";
+
     private RecyclerView recyclerView;
     private List<ItemAlumno> alumnesList = new ArrayList<>();
     private MyAdapterAlumno adapter;
@@ -107,7 +109,11 @@ public class SecondFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
 
+                String alumneClicat=alumnes.get(position).getId();
+                //Log.d("Alumneclicat", "ID Alumneclicat: "+alumneClicat);
+
                 Intent intent = new Intent(requireContext(), infoAlumno.class);
+                intent.putExtra(EXTRA_MESSAGE, alumneClicat);
                 startActivity(intent);
             }
         });
@@ -126,7 +132,7 @@ public class SecondFragment extends Fragment {
     }
 
     public void actualizarListaAlumnos() {
-        Call<List<ItemAlumno>> call = getApiServer().getAlumno(aulaID);
+        Call<List<ItemAlumno>> call = getApiServer().getAlumnos(aulaID);
         call.enqueue(new Callback<List<ItemAlumno>>() {
             @Override
             public void onResponse(Call<List<ItemAlumno>> call, Response<List<ItemAlumno>> response) {
