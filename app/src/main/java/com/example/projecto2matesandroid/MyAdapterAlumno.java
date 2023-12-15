@@ -2,12 +2,15 @@ package com.example.projecto2matesandroid;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,8 +22,22 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
     private SecondFragment fragment;
     List<ItemAlumno> alumnos;
     MyAdapterHome.OnItemClickListener onItemClickListener;
+    private FragmentManager fragmentManager;
 
-    public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos,SecondFragment fragment) {
+    public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos, FragmentManager fragmentManager,SecondFragment fragment) {
+        this.context = context;
+        this.alumnos = alumnos;
+        this.fragmentManager = fragmentManager;
+        this.fragment = fragment;
+    }
+
+    public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos, FragmentManager fragmentManager) {
+        this.context = context;
+        this.alumnos = alumnos;
+        this.fragmentManager = fragmentManager;
+    }
+
+    public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos, SecondFragment fragment) {
         this.context = context;
         this.alumnos = alumnos;
         this.fragment= fragment;
@@ -61,9 +78,25 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
         holder.botonquitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (fragment != null) {
-                    fragment.quitarAlumno(position); // Llamar al método quitarAlumno del fragmento
-                    //Log.e("Boton quitar alumno", "ID alumno a quitar: " + alumnos.get(position).getId());
+                if (fragmentManager != null) {
+                    DialogQuitarAlumno newFragment = new DialogQuitarAlumno();
+                    Bundle args = new Bundle();
+                    args.putInt("position", position); // Pasar la posición al diálogo
+                    newFragment.setArguments(args);
+                    newFragment.setListener(new DialogQuitarAlumno.DialogQuitarAlumnoListener() {
+                        @Override
+                        public void onDialogPositiveClick(DialogFragment dialog) {
+                            if (fragment != null) {
+                                fragment.quitarAlumno(position);
+                            }
+                        }
+                        @Override
+                        public void onDialogNegativeClick(DialogFragment dialog) {
+                            // Aquí puedes manejar la lógica si se hace clic en "Cancelar"
+                        }
+                    });
+                    newFragment.show(fragmentManager, "DialogQuitarAlumno");
+
                 }
             }
         });
@@ -90,7 +123,6 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
-
 
 
 }

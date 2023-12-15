@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -31,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends Fragment implements DialogQuitarAlumno.DialogQuitarAlumnoListener {
 
     public static final String EXTRA_MESSAGE ="com.example.android.twoactivities.extra.MESSAGE";
 
@@ -50,14 +51,11 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-
         if (getArguments() != null) {
             aulaID = getArguments().getString("aulaId");
             Log.e("Aula ID", "Aula id: "+aulaID );
 
         }
-
-
 
         binding = FragmentSecondBinding.inflate(inflater, container, false); // Inicializar el binding
 
@@ -67,7 +65,7 @@ public class SecondFragment extends Fragment {
 
 
         // Configurar el adaptador del RecyclerView
-        adapter = new MyAdapterAlumno(requireContext(), alumnes,this);
+        adapter = new MyAdapterAlumno(requireContext(), alumnes,getParentFragmentManager(),this);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -169,14 +167,12 @@ public class SecondFragment extends Fragment {
                 public void onResponse(Call<ItemAlumno>  call, Response<ItemAlumno>  response) {
 
                     if (response.isSuccessful() && response.body() != null) {
-
                         actualizarListaAlumnos();
 
                     } else {
                         Log.e("Error en respuesta", "Error en response de removeAlumne: " + response.message());
                     }
                 }
-
                 @Override
                 public void onFailure(Call<ItemAlumno>  call, Throwable t) {
                     Toast.makeText(applicationContext, "No s´ha pogut treure l'alumne de l'aula", Toast.LENGTH_SHORT).show();
@@ -199,4 +195,15 @@ public class SecondFragment extends Fragment {
     }
 
 
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        // Al confirmar la eliminación en el diálogo, se ejecuta la lógica para quitar al alumno
+        quitarAlumno(dialog.getArguments().getInt("position"));
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
+    }
 }
