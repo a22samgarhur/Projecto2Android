@@ -160,7 +160,7 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
         // Verificar si la posición está dentro de los límites de la lista
         if (position >= 0 && position < alumnes.size()) {
             String alumnoId = alumnes.get(position).getId();
-            Log.e("Boton quitar alumno", "ID alumno a quitar: " + alumnes.get(position).getId());
+            //Log.e("Boton quitar alumno", "ID alumno a quitar: " + alumnes.get(position).getId());
             Call<ItemAlumno> call = getApiServer().removeAlumne(alumnoId);
             call.enqueue(new Callback<ItemAlumno> () {
                 @Override
