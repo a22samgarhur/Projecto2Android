@@ -91,7 +91,7 @@ public class infoAlumno extends AppCompatActivity {
     //Funcion para llenar los campos del perfil de usuario
     public void llenarCampos(){
 
-        ((TextView) findViewById(R.id.textViewInfoAlumneNom)).setText(alumno.getName());
+        ((TextView) findViewById(R.id.textViewInfoAlumneNom)).setText(alumno.getName()+" "+alumno.getSurname());
         ((TextView) findViewById(R.id.textViewInfoAlumneEmail)).setText(alumno.getEmail());
         ((TextView) findViewById(R.id.textViewInfoAlumneAula)).setText(alumno.getNom_aula());
         ((TextView) findViewById(R.id.textViewInfoAlumneNivell)).setText(getString(R.string.Nivell)+" "+alumno.getLvl());
