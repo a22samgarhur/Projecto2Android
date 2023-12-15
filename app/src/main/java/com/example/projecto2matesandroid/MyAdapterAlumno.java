@@ -2,6 +2,7 @@ package com.example.projecto2matesandroid;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,14 @@ import java.util.List;
 
 public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
     Context context;
+    private SecondFragment fragment;
     List<ItemAlumno> alumnos;
     MyAdapterHome.OnItemClickListener onItemClickListener;
 
-    public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos) {
+    public MyAdapterAlumno(Context context, List<ItemAlumno> alumnos,SecondFragment fragment) {
         this.context = context;
         this.alumnos = alumnos;
+        this.fragment= fragment;
     }
 
     @NonNull
@@ -50,10 +53,22 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
                 if (onItemClickListener != null) {
                     // Llamar al método del listener pasando la posición del elemento clicado
                     onItemClickListener.onItemClick(position);
-                    //Log.e("Boton", "Boton pulsado: "+items.get(position).getName());
+                    //Log.e("Boton", "Boton pulsado: "+alumnos.get(position).getName());
                 }
             }
         });
+
+        holder.botonquitar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fragment != null) {
+                    fragment.quitarAlumno(position); // Llamar al método quitarAlumno del fragmento
+                    //Log.e("Boton quitar alumno", "ID alumno a quitar: " + alumnos.get(position).getId());
+                }
+            }
+        });
+
+
     }
 
     @Override

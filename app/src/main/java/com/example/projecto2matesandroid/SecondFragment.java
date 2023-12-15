@@ -67,7 +67,7 @@ public class SecondFragment extends Fragment {
 
 
         // Configurar el adaptador del RecyclerView
-        adapter = new MyAdapterAlumno(requireContext(), alumnesList);
+        adapter = new MyAdapterAlumno(requireContext(), alumnesList,this);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -154,6 +154,22 @@ public class SecondFragment extends Fragment {
                 Toast.makeText(applicationContext, "No s´ha pogut obtenir els alumnes", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    public void quitarAlumno(int position) {
+
+        // Verificar si la posición está dentro de los límites de la lista
+        if (position >= 0 && position < alumnes.size()) {
+            String alumnoId = alumnes.get(position).getId();
+            Log.e("Boton quitar alumno", "ID de alumno a quitar: "+alumnoId);
+
+
+            // Notificar al adaptador sobre el cambio en los datos
+            adapter.setItems(alumnes);
+        } else {
+            Log.e("Error", "Posición inválida");
+        }
 
     }
 

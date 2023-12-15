@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:backgroundTint="#FFFFFF"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/ic_delete"
+        />
 
 </RelativeLayout>
