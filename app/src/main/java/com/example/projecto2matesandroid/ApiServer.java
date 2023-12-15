@@ -25,6 +25,8 @@ public interface ApiServer {
     @GET("/consultarUsuariPerId/{id}")
     Call<ItemAlumno> getAlumne(@Path("id") String id);
 
+    @GET("/quitarAlumnoAula/{id}")
+    Call<ItemAlumno> removeAlumne(@Path("id") String id);
 
     @POST("/crearAula")
     Call<Aula> crearAula(@Body Aula aula);

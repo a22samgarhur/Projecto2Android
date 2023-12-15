@@ -36,7 +36,7 @@ public class SecondFragment extends Fragment {
     public static final String EXTRA_MESSAGE ="com.example.android.twoactivities.extra.MESSAGE";
 
     private RecyclerView recyclerView;
-    private List<ItemAlumno> alumnesList = new ArrayList<>();
+
     private MyAdapterAlumno adapter;
     private FragmentSecondBinding binding;
     private Context applicationContext;
@@ -67,7 +67,7 @@ public class SecondFragment extends Fragment {
 
 
         // Configurar el adaptador del RecyclerView
-        adapter = new MyAdapterAlumno(requireContext(), alumnesList,this);
+        adapter = new MyAdapterAlumno(requireContext(), alumnes,this);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -162,11 +162,30 @@ public class SecondFragment extends Fragment {
         // Verificar si la posición está dentro de los límites de la lista
         if (position >= 0 && position < alumnes.size()) {
             String alumnoId = alumnes.get(position).getId();
-            Log.e("Boton quitar alumno", "ID de alumno a quitar: "+alumnoId);
+            Log.e("Boton quitar alumno", "ID alumno a quitar: " + alumnes.get(position).getId());
+            Call<ItemAlumno> call = getApiServer().removeAlumne(alumnoId);
+            call.enqueue(new Callback<ItemAlumno> () {
+                @Override
+                public void onResponse(Call<ItemAlumno>  call, Response<ItemAlumno>  response) {
+
+                    if (response.isSuccessful() && response.body() != null) {
+
+                        actualizarListaAlumnos();
+
+                    } else {
+                        Log.e("Error en respuesta", "Error en response de removeAlumne: " + response.message());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ItemAlumno>  call, Throwable t) {
+                    Toast.makeText(applicationContext, "No s´ha pogut treure l'alumne de l'aula", Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
-            // Notificar al adaptador sobre el cambio en los datos
-            adapter.setItems(alumnes);
+
+
         } else {
             Log.e("Error", "Posición inválida");
         }
