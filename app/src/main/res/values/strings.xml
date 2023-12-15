@@ -10,7 +10,14 @@
     <string name="Afegir">Afegir</string>
     <string name="Aceptar">Aceptar</string>
     <string name="Cancelar">Cancelar</string>
+    <string name="NomP">Nom:</string>
     <string name="Nom">Nom</string>
+    <string name="Cognoms">Cognoms</string>
+    <string name="CognomsP">Cognoms:</string>
+    <string name="Email">Email</string>
+    <string name="EmailP">Email:</string>
+    <string name="Constrasenya">Contrasenya</string>
+    <string name="ConstrasenyaP">Contrasenya:</string>
     <string name="Codi">Codi</string>
     <string name="Codi_acces">Codi d\'acces</string>
     <string name="AfegirAula">Afegir nova aula</string>
@@ -19,6 +26,7 @@
     <string name="Nivell">Nivell</string>
     <string name="Rang">Rang</string>
     <string name="Quitar_alumne">Esta segur de que vols treure l\'alumne de l\'aula?</string>
+    <string name="RestablecerConstrasenya">Reestablir contrasenya</string>
 
 
 </resources>

@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("InfoUsuari", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("idProfesor", respostaUsuari.getUsuariID());
+        editor.putString("nomProfesor", respostaUsuari.getNickname());
+        editor.putString("cognomProfesor", respostaUsuari.getSurname());
         editor.putString("Email", respostaUsuari.getEmail());
         editor.commit();
 
