@@ -2,6 +2,7 @@ package com.example.projecto2matesandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -37,4 +38,11 @@ public class PerfilActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "restablirConstrasenya");
 
     }
+
+    public void volver(View view){
+        Intent intent = new Intent(this, homeActivity.class);
+        startActivity(intent);
+
+    }
+
 }
