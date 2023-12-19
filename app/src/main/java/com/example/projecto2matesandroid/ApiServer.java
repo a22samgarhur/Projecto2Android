@@ -30,4 +30,9 @@ public interface ApiServer {
 
     @POST("/crearAula")
     Call<Aula> crearAula(@Body Aula aula);
+
+    @POST("/restablecerConstrasenya")
+    Call<actualizarConstrasenyaModel> restablecerConstrasenya(@Body actualizarConstrasenyaModel actualizarConstrasenyaModel);
+
+
 }

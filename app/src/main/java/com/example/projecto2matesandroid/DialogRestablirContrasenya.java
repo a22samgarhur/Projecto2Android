@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
@@ -24,6 +25,9 @@ import retrofit2.Response;
 public class DialogRestablirContrasenya extends DialogFragment {
 
     private Context applicationContext;
+    EditText contraAntiga,contraNova;
+    actualizarConstrasenyaModel actualizar = new actualizarConstrasenyaModel();
+    private AlertDialog dialog;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,21 +36,41 @@ public class DialogRestablirContrasenya extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         View view = inflater.inflate(R.layout.dialog_restablircontrasenya, null);
+        contraAntiga=view.findViewById(R.id.restablirContrasenyaAntiga);
+        contraNova=view.findViewById(R.id.restablirContrasenyaNova);
+
 
         builder.setView(view)
                 .setPositiveButton(R.string.Aceptar, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
+
                     }
                 })
                 .setNegativeButton(R.string.Cancelar, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        dialog.dismiss();
                     }
                 });
 
-        return builder.create();
+        dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                AlertDialog alertDialog = (AlertDialog) dialogInterface;
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        novaContrasenya();
+
+                    }
+                });
+            }
+        });
+
+        return dialog;
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -55,21 +79,34 @@ public class DialogRestablirContrasenya extends DialogFragment {
     }
 
     public void novaContrasenya() {
-        Call<List<ItemHome>> call = getApiServer().getAulas();
-        call.enqueue(new Callback<List<ItemHome>>() {
+        //Log.e("Antigacontrasenya", "AntigaContrasenya: "+contraAntiga.getText().toString());
+        //Log.e("Novacontrasenya", "novaContrasenya: "+contraNova.getText().toString());
+        actualizar.setContrasenyaAntigua(contraAntiga.getText().toString());
+        actualizar.setContrasenyaNueva(contraNova.getText().toString());
+
+
+        Call<actualizarConstrasenyaModel> call = getApiServer().restablecerConstrasenya(actualizar);
+        call.enqueue(new Callback<actualizarConstrasenyaModel>() {
             @Override
-            public void onResponse(Call<List<ItemHome>> call, Response<List<ItemHome>> response) {
+            public void onResponse(Call<actualizarConstrasenyaModel> call, Response<actualizarConstrasenyaModel> response) {
 
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null && !contraNova.equals("")) {
+                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCambiada), Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
 
+
+                } else if (!contraNova.equals("")) {
+                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaNovaBuida), Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Log.e("Error en respuesta", "Error en response de getAulas: " + response.message());
+                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
                 }
+
+
             }
 
             @Override
-            public void onFailure(Call<List<ItemHome>> call, Throwable t) {
+            public void onFailure(Call<actualizarConstrasenyaModel> call, Throwable t) {
                 Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
             }
         });
