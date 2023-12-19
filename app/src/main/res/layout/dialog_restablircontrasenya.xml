@@ -5,28 +5,39 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/TextViewAfegirAula"
+        android:id="@+id/TextViewRestablirContrasenya"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="?attr/colorPrimary"
-        android:contentDescription="@string/AfegirAula"
+        android:contentDescription="@string/RestablirConstrasenya"
         android:gravity="center|center_horizontal|center_vertical"
         android:scaleType="center"
-        android:text="@string/AfegirAula"
+        android:text="@string/RestablirConstrasenya"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold" />
 
 
     <EditText
-        android:id="@+id/novaAulaNom"
+        android:id="@+id/restablirContrasenyaAntiga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="@string/Nom"
+        android:hint="@string/ConstrasenyaAntiga"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/restablirContrasenyaNova"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:hint="@string/ConstrasenyaNova"
         android:inputType="text" />
 
 

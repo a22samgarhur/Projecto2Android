@@ -24,6 +24,9 @@
     <string name="EmailP">Email:</string>
     <string name="Constrasenya">Contrasenya</string>
     <string name="ConstrasenyaP">Contrasenya:</string>
+    <string name="RestablirConstrasenya">Reestablir contrasenya</string>
+    <string name="ConstrasenyaAntiga">Contrasenya antiga</string>
+    <string name="ConstrasenyaNova">Contrasenya nova</string>
     <string name="ConstrasenyaIncorrecta">Usuari o contrasenya incorrecta</string>
     <string name="Codi">Codi</string>
     <string name="Codi_acces">Codi d\'acces</string>
@@ -33,7 +36,7 @@
     <string name="Nivell">Nivell</string>
     <string name="Rang">Rang</string>
     <string name="Quitar_alumne">Esta segur de que vols treure l\'alumne de l\'aula?</string>
-    <string name="RestablecerConstrasenya">Reestablir contrasenya</string>
+
 
 
 </resources>
