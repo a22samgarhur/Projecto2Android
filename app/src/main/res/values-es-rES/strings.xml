@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Math Thai</string>
+    <string name="title_activity_home">homeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Siguiente</string>
+    <string name="conexioServer">Error en la conexion con el servidor</string>
+    <string name="Pagina_principal">Pagina Principal</string>
+    <string name="Informacion_Aula">Informacion Aula</string>
+    <string name="Nova_aula">Añadir nueva aula</string>
+    <string name="aulaCreada"> Aula creada correctamente</string>
+    <string name="errorAulaCreada">No se ha podido crear el aula, vuelva a intentarlo</string>
+    <string name="obtenirAula">No se han podido obtener las aulas</string>
+    <string name="treureAlumne">No se ha podido quitar el alumno de la aula</string>
+    <string name="obtenirAlumne">No se han podido obtener los alumnos</string>
+    <string name="Afegir">Añadir</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="NomP">Nombre:</string>
+    <string name="Nom">Nombre</string>
+    <string name="Cognoms">Apellidos</string>
+    <string name="CognomsP">Apellidos:</string>
+    <string name="Email">Email</string>
+    <string name="EmailP">Email:</string>
+    <string name="Constrasenya">Contraseña</string>
+    <string name="ConstrasenyaP">Contraseña:</string>
+    <string name="RestablecerConstrasenya">Reestablecer Contraseña</string>
+    <string name="RestablirConstrasenya">Reestablecer Contraseña</string>
+    <string name="ConstrasenyaAntiga">Contraseña antigua</string>
+    <string name="ConstrasenyaNova">Contraseña nueva</string>
+    <string name="ConstrasenyaCoincidencia">La contraseña antigua no es correcta</string>
+    <string name="ConstrasenyaCambiada">Contraseña reestablecida correctamente</string>
+    <string name="ConstrasenyaBuida">Contraseña vacia</string>
+    <string name="ConstrasenyaIncorrecta">Usuario o contraseña incorrecta</string>
+    <string name="Codi">Codigo</string>
+    <string name="Codi_acces">Codigo de acceso</string>
+    <string name="AfegirAula">Añadir nueva aula</string>
+    <string name="infoAlumne">Informacion alumno</string>
+    <string name="Tornar">Volver</string>
+    <string name="Nivell">Nivel</string>
+    <string name="Rang">Rango</string>
+    <string name="Quitar_alumne">Esta seguro de que quieres quitar al alumno de la aula?</string>
+    <string name="PerfilUsuari">Perfil de usuario</string>
+
+</resources>

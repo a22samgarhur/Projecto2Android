@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Math Thai</string>
+    <string name="title_activity_home">homeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="conexioServer">Error connecting to the server</string>
+    <string name="Pagina_principal">Main Page</string>
+    <string name="Informacion_Aula">Classroom Information</string>
+    <string name="Nova_aula">Add new classroom</string>
+    <string name="aulaCreada"> Classroom created successfully</string>
+    <string name="errorAulaCreada">Failed to create classroom, please try again</string>
+    <string name="obtenirAula">Unable to retrieve classrooms</string>
+    <string name="treureAlumne">Unable to remove student from the classroom</string>
+    <string name="obtenirAlumne">Unable to retrieve students</string>
+    <string name="Afegir">Add</string>
+    <string name="Aceptar">Accept</string>
+    <string name="Cancelar">Cancel</string>
+    <string name="NomP">Name:</string>
+    <string name="Nom">Name</string>
+    <string name="Cognoms">Last Name</string>
+    <string name="CognomsP">Last Name:</string>
+    <string name="Email">Email</string>
+    <string name="EmailP">Email:</string>
+    <string name="Constrasenya">Password</string>
+    <string name="ConstrasenyaP">Password:</string>
+    <string name="RestablecerConstrasenya">Reset Password</string>
+    <string name="RestablirConstrasenya">Reset Password</string>
+    <string name="ConstrasenyaAntiga">Old Password</string>
+    <string name="ConstrasenyaNova">New Password</string>
+    <string name="ConstrasenyaCoincidencia">Old password is incorrect</string>
+    <string name="ConstrasenyaCambiada">Password reset successfully</string>
+    <string name="ConstrasenyaBuida">Empty Password</string>
+    <string name="ConstrasenyaIncorrecta">Incorrect username or password</string>
+    <string name="Codi">Code</string>
+    <string name="Codi_acces">Access Code</string>
+    <string name="AfegirAula">Add new classroom</string>
+    <string name="infoAlumne">Student Information</string>
+    <string name="Tornar">Back</string>
+    <string name="Nivell">Level</string>
+    <string name="Rang">Rank</string>
+    <string name="Quitar_alumne">Are you sure you want to remove the student from the classroom?</string>
+    <string name="PerfilUsuari">User Profile</string>
+</resources>
