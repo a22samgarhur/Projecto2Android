@@ -25,7 +25,7 @@ import retrofit2.Response;
 public class DialogRestablirContrasenya extends DialogFragment {
 
     private Context applicationContext;
-    EditText contraAntiga,contraNova;
+    EditText contraAntiga, contraNova;
     actualizarConstrasenyaModel actualizar = new actualizarConstrasenyaModel();
     private AlertDialog dialog;
 
@@ -36,8 +36,8 @@ public class DialogRestablirContrasenya extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         View view = inflater.inflate(R.layout.dialog_restablircontrasenya, null);
-        contraAntiga=view.findViewById(R.id.restablirContrasenyaAntiga);
-        contraNova=view.findViewById(R.id.restablirContrasenyaNova);
+        contraAntiga = view.findViewById(R.id.restablirContrasenyaAntiga);
+        contraNova = view.findViewById(R.id.restablirContrasenyaNova);
 
 
         builder.setView(view)
@@ -81,35 +81,35 @@ public class DialogRestablirContrasenya extends DialogFragment {
     public void novaContrasenya() {
         //Log.e("Antigacontrasenya", "AntigaContrasenya: "+contraAntiga.getText().toString());
         //Log.e("Novacontrasenya", "novaContrasenya: "+contraNova.getText().toString());
-        actualizar.setContrasenyaAntigua(contraAntiga.getText().toString());
-        actualizar.setContrasenyaNueva(contraNova.getText().toString());
+
+        String contrasenyaNova = contraNova.getText().toString();
+
+        if (contrasenyaNova.isEmpty()) {
+            Toast.makeText(applicationContext, getString(R.string.ConstrasenyaBuida), Toast.LENGTH_SHORT).show();
+        } else {
+            actualizar.setContrasenyaAntigua(contraAntiga.getText().toString());
+            actualizar.setContrasenyaNueva(contrasenyaNova);
 
 
-        Call<actualizarConstrasenyaModel> call = getApiServer().restablecerConstrasenya(actualizar);
-        call.enqueue(new Callback<actualizarConstrasenyaModel>() {
-            @Override
-            public void onResponse(Call<actualizarConstrasenyaModel> call, Response<actualizarConstrasenyaModel> response) {
+            Call<actualizarConstrasenyaModel> call = getApiServer().restablecerConstrasenya(actualizar);
+            call.enqueue(new Callback<actualizarConstrasenyaModel>() {
+                @Override
+                public void onResponse(Call<actualizarConstrasenyaModel> call, Response<actualizarConstrasenyaModel> response) {
 
-                if (response.isSuccessful() && response.body() != null && !contraNova.equals("")) {
-                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCambiada), Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-
-
-                } else if (!contraNova.equals("")) {
-                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaNovaBuida), Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful() && response.body() != null && !contraNova.equals("")) {
+                        Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCambiada), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
+                    }
                 }
 
+                @Override
+                public void onFailure(Call<actualizarConstrasenyaModel> call, Throwable t) {
+                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
+                }
+            });
 
-            }
-
-            @Override
-            public void onFailure(Call<actualizarConstrasenyaModel> call, Throwable t) {
-                Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        }
     }
 }

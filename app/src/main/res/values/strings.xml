@@ -30,7 +30,7 @@
     <string name="ConstrasenyaNova">Contrasenya nova</string>
     <string name="ConstrasenyaCoincidencia">La contrasenya antiga no es correcta</string>
     <string name="ConstrasenyaCambiada">Contrasenya reestablerta correctament</string>
-    <string name="ConstrasenyaNovaBuida">Contrasenya nova buida</string>
+    <string name="ConstrasenyaBuida">Contrasenya buida</string>
     <string name="ConstrasenyaIncorrecta">Usuari o contrasenya incorrecta</string>
     <string name="Codi">Codi</string>
     <string name="Codi_acces">Codi d\'acces</string>
