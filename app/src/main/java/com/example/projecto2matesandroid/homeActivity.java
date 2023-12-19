@@ -4,13 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.projecto2matesandroid.databinding.ActivityHomeBinding;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -133,8 +129,13 @@ public class homeActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settingsPerfil) {
             Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_settingsTancarsesio) {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             return true;
         }

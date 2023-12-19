@@ -3,9 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_settingsPerfil"
+        android:enabled="true"
+        android:icon="@drawable/icono_perfil"
         android:orderInCategory="10"
-        android:title="PerfilUsuari"
-        app:showAsAction="never" />
+        android:title="@string/PerfilUsuari"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_settingsTancarsesio"
+        android:enabled="true"
+        android:icon="@drawable/cerrar_sesion"
+        android:orderInCategory="10"
+        android:title="@string/PerfilUsuari"
+        app:showAsAction="ifRoom" />
+
+
+
 
 </menu>

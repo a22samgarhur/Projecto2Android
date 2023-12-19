@@ -2,8 +2,7 @@
     <string name="app_name">Math Thai</string>
     <string name="title_activity_home">homeActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="next">Siguiente</string>
-    <string name="previous">Volver</string>
+    <string name="next">Seguent</string>
     <string name="conexioServer">Error amb la conexio amb el server</string>
     <string name="Pagina_principal">Pagina Principal</string>
     <string name="Informacion_Aula">Informacio Aula</string>
@@ -40,6 +39,8 @@
     <string name="Nivell">Nivell</string>
     <string name="Rang">Rang</string>
     <string name="Quitar_alumne">Esta segur de que vols treure l\'alumne de l\'aula?</string>
+    <string name="PerfilUsuari">Perfil d\'usuari</string>
+
 
 
 
