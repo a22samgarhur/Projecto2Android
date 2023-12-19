@@ -134,11 +134,8 @@ public class homeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-
-            /*Intent intent = new Intent(this, Formulari.class);
-            intent.putExtra(EXTRA_MESSAGE, nom);
-            startActivity(intent);*/
-
+            Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -190,7 +187,7 @@ public class homeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ItemHome>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir les aules", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.obtenirAula), Toast.LENGTH_SHORT).show();
             }
         });
 

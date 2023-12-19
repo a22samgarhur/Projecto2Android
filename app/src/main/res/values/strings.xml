@@ -4,9 +4,15 @@
     <!-- Strings used for fragments for navigation -->
     <string name="next">Siguiente</string>
     <string name="previous">Volver</string>
+    <string name="conexioServer">Error amb la conexio amb el server</string>
     <string name="Pagina_principal">Pagina Principal</string>
     <string name="Informacion_Aula">Informacio Aula</string>
     <string name="Nova_aula">Afegir nova aula</string>
+    <string name="aulaCreada"> Aula creada correctament</string>
+    <string name="errorAulaCreada">No s\'ha pogut crear l\'aula, torni a intentar</string>
+    <string name="obtenirAula">No s´han pogut obtenir les aules</string>
+    <string name="treureAlumne">No s´ha pogut treure l\'alumne de l\'aula</string>
+    <string name="obtenirAlumne">No s´ha pogut obtenir els alumnes</string>
     <string name="Afegir">Afegir</string>
     <string name="Aceptar">Aceptar</string>
     <string name="Cancelar">Cancelar</string>
@@ -18,6 +24,7 @@
     <string name="EmailP">Email:</string>
     <string name="Constrasenya">Contrasenya</string>
     <string name="ConstrasenyaP">Contrasenya:</string>
+    <string name="ConstrasenyaIncorrecta">Usuari o contrasenya incorrecta</string>
     <string name="Codi">Codi</string>
     <string name="Codi_acces">Codi d\'acces</string>
     <string name="AfegirAula">Afegir nova aula</string>

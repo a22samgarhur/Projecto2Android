@@ -4,7 +4,7 @@ public class Usuari {
 
     private String id;
     private String usuariID;
-    private String nickname;
+    private String name;
     private String surname;
     private String email;
     private String image;
@@ -14,10 +14,10 @@ public class Usuari {
 
     }
 
-    public Usuari(String id, String usuariID, String nickname, String surname, String email, String image, String contrasena) {
+    public Usuari(String id, String usuariID, String name, String surname, String email, String image, String contrasena) {
         this.id = id;
         this.usuariID = usuariID;
-        this.nickname = nickname;
+        this.name = name;
         this.surname = surname;
         this.email = email;
         this.image = image;
@@ -65,12 +65,12 @@ public class Usuari {
         this.usuariID = usuariID;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getName() {
+        return name;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

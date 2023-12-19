@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Usuari> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Error amb la conexio amb el server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.conexioServer), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Usuari", "onResponse: "+usuariRespuesta.getEmail());
                 guardarDatos(usuariRespuesta);
                 if (usuariRespuesta.getEmail().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Usuari o contrasenya incorrecta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),  getString(R.string.ConstrasenyaIncorrecta), Toast.LENGTH_SHORT).show();
 
                 } else {
                     Intent intent = new Intent(getApplicationContext(), homeActivity.class);
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Usuari> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Error amb la conexio amb el server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.conexioServer), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,9 +123,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("InfoUsuari", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("idProfesor", respostaUsuari.getUsuariID());
-        editor.putString("nomProfesor", respostaUsuari.getNickname());
+        editor.putString("nomProfesor", respostaUsuari.getName());
         editor.putString("cognomProfesor", respostaUsuari.getSurname());
         editor.putString("Email", respostaUsuari.getEmail());
+        editor.putString("Contrasenya", respostaUsuari.getContrasena());
         editor.commit();
 
     }

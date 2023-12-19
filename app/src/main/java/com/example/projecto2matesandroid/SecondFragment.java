@@ -149,7 +149,7 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
 
             @Override
             public void onFailure(Call<List<ItemAlumno>> call, Throwable t) {
-                Toast.makeText(applicationContext, "No s´ha pogut obtenir els alumnes", Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, getString(R.string.obtenirAlumne), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -175,7 +175,7 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
                 }
                 @Override
                 public void onFailure(Call<ItemAlumno>  call, Throwable t) {
-                    Toast.makeText(applicationContext, "No s´ha pogut treure l'alumne de l'aula", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(applicationContext, getString(R.string.treureAlumne), Toast.LENGTH_SHORT).show();
                 }
             });
 

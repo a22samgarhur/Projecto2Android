@@ -75,14 +75,14 @@ public class DialogNuevaAula extends DialogFragment {
         call.enqueue(new Callback<Aula>() {
             @Override
             public void onResponse(Call<Aula> call, Response<Aula> response) {
-                Log.e("Crear aula response", "onResponse: "+response );
-                Toast.makeText(applicationContext, "Aula creada correctament", Toast.LENGTH_SHORT).show();
+                //Log.e("Crear aula response", "onResponse: "+response );
+                Toast.makeText(applicationContext, getString(R.string.aulaCreada), Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call<Aula> call, Throwable t) {
-                Toast.makeText(applicationContext, "No s'ha pogut crear l'aula, torni a intentar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, getString(R.string.errorAulaCreada), Toast.LENGTH_SHORT).show();
             }
         });
 
