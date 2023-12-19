@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class PerfilActivity extends AppCompatActivity {
@@ -29,6 +30,11 @@ public class PerfilActivity extends AppCompatActivity {
         cognoms.setText(cognomsProf);
         email.setText(emailProf);
 
+    }
+
+    public void restablecerContrasenya(View view){
+        DialogRestablirContrasenya newFragment = new DialogRestablirContrasenya();
+        newFragment.show(getSupportFragmentManager(), "restablirConstrasenya");
 
     }
 }

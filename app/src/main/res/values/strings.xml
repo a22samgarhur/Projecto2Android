@@ -24,9 +24,11 @@
     <string name="EmailP">Email:</string>
     <string name="Constrasenya">Contrasenya</string>
     <string name="ConstrasenyaP">Contrasenya:</string>
+    <string name="RestablecerConstrasenya">Reestablir contrasenya</string>
     <string name="RestablirConstrasenya">Reestablir contrasenya</string>
     <string name="ConstrasenyaAntiga">Contrasenya antiga</string>
     <string name="ConstrasenyaNova">Contrasenya nova</string>
+    <string name="ConstrasenyaCoincidencia">La contrasenya antiga no es correcta</string>
     <string name="ConstrasenyaIncorrecta">Usuari o contrasenya incorrecta</string>
     <string name="Codi">Codi</string>
     <string name="Codi_acces">Codi d\'acces</string>
