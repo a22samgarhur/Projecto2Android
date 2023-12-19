@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Projecto2MatesAndroid</string>
+    <string name="app_name">Math Thai</string>
     <string name="title_activity_home">homeActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Siguiente</string>

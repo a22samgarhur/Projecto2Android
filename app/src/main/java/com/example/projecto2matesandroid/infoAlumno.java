@@ -46,10 +46,10 @@ public class infoAlumno extends AppCompatActivity {
 
         recyclerViewHistorial=findViewById(R.id.recyclerviewInfoAlumeHistorial);
 
-        historials.add(new ItemHistorial("14-03-2023 14:10 pm","A l'exercici 1, a la Pregunta 3 la resposta a sigut correcta"));
-        historials.add(new ItemHistorial("20-08-2023","Has guanyat la batalla 3 que ha durat 10 minuts"));
-        historials.add(new ItemHistorial("19-09-2023","A l'exercici 10, a la Pregunta 5 la resposta a sigut incorrecta"));
-        historials.add(new ItemHistorial("19-09-2023","A l'exercici 10, a la Pregunta 3 la resposta a sigut correcta"));
+        historials.add(new ItemHistorial(" 14-03-2023 14:10 pm","A l'exercici 1, a la Pregunta 3 la resposta a sigut correcta"));
+        historials.add(new ItemHistorial(" 20-08-2023","Has guanyat la batalla 3 que ha durat 10 minuts"));
+        historials.add(new ItemHistorial(" 19-09-2023","A l'exercici 10, a la Pregunta 5 la resposta a sigut incorrecta"));
+        historials.add(new ItemHistorial(" 19-09-2023","A l'exercici 10, a la Pregunta 3 la resposta a sigut correcta"));
 
 
 
