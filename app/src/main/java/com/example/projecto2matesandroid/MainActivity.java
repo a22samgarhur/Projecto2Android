@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordText;
     Usuari usuari = new Usuari();
 
-    private static final String BASE_URL = "http://10.0.2.2:3001";
+    //private static final String BASE_URL = "http://10.0.2.2:3001";
 
-    //private static final String BASE_URL = "http://math-thai.dam.inspedralbes.cat:3001";
+    private static final String BASE_URL = "http://math-thai.dam.inspedralbes.cat:3902";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
