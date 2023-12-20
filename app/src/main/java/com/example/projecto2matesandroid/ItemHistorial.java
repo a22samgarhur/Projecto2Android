@@ -2,32 +2,32 @@ package com.example.projecto2matesandroid;
 
 public class ItemHistorial {
 
-    String Hora;
-    String informacion;
+    String hora;
+    String historial;
 
     public ItemHistorial() {
 
     }
 
-    public ItemHistorial(String hora, String informacion) {
-        Hora = hora;
-        this.informacion = informacion;
+    public ItemHistorial(String Historial,String hora) {
+        this.hora = hora;
+        this.historial = Historial;
     }
 
     public String getHora() {
-        return Hora;
+        return hora;
     }
 
     public void setHora(String hora) {
-        Hora = hora;
+        this.hora = hora;
     }
 
-    public String getInformacion() {
-        return informacion;
+    public String getHistorial() {
+        return historial;
     }
 
-    public void setInformacion(String informacion) {
-        this.informacion = informacion;
+    public void setHistorial(String historial) {
+        this.historial = historial;
     }
 
 

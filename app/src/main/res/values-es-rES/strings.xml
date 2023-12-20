@@ -14,6 +14,7 @@
     <string name="treureAlumne">No se ha podido quitar el alumno de la aula</string>
     <string name="obtenirAlumne">No se han podido obtener los alumnos</string>
     <string name="informacioAlumne">No se ha podido obtener la informacion del alumno</string>
+    <string name="historialAlumne">No se ha podido obtener el historial del alumno</string>
     <string name="Afegir">Añadir</string>
     <string name="Aceptar">Aceptar</string>
     <string name="Cancelar">Cancelar</string>

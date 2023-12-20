@@ -28,7 +28,7 @@ public class MyAdapterHistorial extends RecyclerView.Adapter<MyViewHolderHistori
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderHistorial holder, int position) {
         holder.horaView.setText(items.get(position).getHora());
-        holder.informacionView.setText(items.get(position).getInformacion());
+        holder.informacionView.setText(items.get(position).getHistorial());
 
     }
 

@@ -35,6 +35,7 @@ public class infoAlumno extends AppCompatActivity {
 
     List<ItemHistorial> historials = new ArrayList<ItemHistorial>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,20 +47,15 @@ public class infoAlumno extends AppCompatActivity {
 
         recyclerViewHistorial=findViewById(R.id.recyclerviewInfoAlumeHistorial);
 
-        historials.add(new ItemHistorial(" 14-03-2023 14:10 pm","A l'exercici 1, a la Pregunta 3 la resposta a sigut correcta"));
+        cogerDatosAlumno();
+
+        /*historials.add(new ItemHistorial(" 14-03-2023 14:10 pm","A l'exercici 1, a la Pregunta 3 la resposta a sigut correcta"));
         historials.add(new ItemHistorial(" 20-08-2023","Has guanyat la batalla 3 que ha durat 10 minuts"));
         historials.add(new ItemHistorial(" 19-09-2023","A l'exercici 10, a la Pregunta 5 la resposta a sigut incorrecta"));
-        historials.add(new ItemHistorial(" 19-09-2023","A l'exercici 10, a la Pregunta 3 la resposta a sigut correcta"));
+        historials.add(new ItemHistorial(" 19-09-2023","A l'exercici 10, a la Pregunta 3 la resposta a sigut correcta"));*/
 
 
-
-
-        // Crear un adaptador inicial con una lista vacía
-        adapter = new MyAdapterHistorial(getApplicationContext(), historials);
         recyclerViewHistorial.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewHistorial.setAdapter(adapter);
-
-        cogerDatosAlumno();
 
 
     }
@@ -74,6 +70,7 @@ public class infoAlumno extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     alumno = response.body();
                     llenarCampos();
+                    cogerHistorial(alumno.getEmail());
 
                 } else {
                     Log.e("Error en respuesta", "Error en response de getAlumne: " + response.message());
@@ -107,6 +104,39 @@ public class infoAlumno extends AppCompatActivity {
                 .into(((ImageView) findViewById(R.id.imageViewInfoAlumne)));
     }
 
+    //Funcion para hacer una llamada y coger datos del historial del alumno en la BD
+    public void cogerHistorial(String email) {
+
+        EmailAlumno emailAlumno = new EmailAlumno(email);
+        Log.e("Email alumno", "Email alumno: "+emailAlumno.getEmail());
+        Call <List<ItemHistorial>> call = getApiServer().historial(emailAlumno);
+
+        call.enqueue(new Callback<List<ItemHistorial>>() {
+            @Override
+            public void onResponse(Call<List<ItemHistorial>> call, Response<List<ItemHistorial>> response) {
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    historials=response.body();
+
+                    adapter = new MyAdapterHistorial(getApplicationContext(), historials);
+                    recyclerViewHistorial.setAdapter(adapter);
+
+                    /*for (ItemHistorial item : historials) {
+                        Log.d("Historial", "Historial: " + item.getHistorial() + ", Hora: " + item.getHora());
+                    }*/
+
+                } else {
+                    Log.e("Error en respuesta", "Error en response de historial: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ItemHistorial>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), getString(R.string.historialAlumne), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     public void tornar(View view) {
         finish();

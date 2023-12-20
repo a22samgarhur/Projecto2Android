@@ -37,5 +37,9 @@ public interface ApiServer {
     @POST("/restablecerConstrasenya")
     Call<actualizarConstrasenyaModel> restablecerConstrasenya(@Body actualizarConstrasenyaModel actualizarConstrasenyaModel);
 
+    @POST("/historial")
+    Call<List<ItemHistorial>> historial(@Body EmailAlumno email);
+
+
 
 }
