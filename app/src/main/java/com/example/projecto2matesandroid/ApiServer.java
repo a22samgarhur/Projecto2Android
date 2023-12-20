@@ -16,6 +16,9 @@ public interface ApiServer {
     @POST("/loginprofesor")
     Call<Usuari> login(@Body Usuari usuari);
 
+    @GET("/logout")
+    Call<Void> logout();
+
     @GET("/getAulas")
     Call<List<ItemHome>> getAulas();
 

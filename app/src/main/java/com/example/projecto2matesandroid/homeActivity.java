@@ -1,5 +1,7 @@
 package com.example.projecto2matesandroid;
 
+import static com.example.projecto2matesandroid.MainActivity.getApiServer;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -136,8 +138,7 @@ public class homeActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_settingsTancarsesio) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            logout();
             return true;
         }
 
@@ -199,6 +200,32 @@ public class homeActivity extends AppCompatActivity {
 
     public static ApiServer getApiServer() {
         return apiServer;
+    }
+
+    public void logout() {
+
+        Call <Void> call = getApiServer().logout();
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                if (response.isSuccessful()) {
+                    Intent intent = new Intent(homeActivity.this, MainActivity.class);
+                    startActivity(intent);
+
+                } else {
+                    Log.e("Error en logout", "Error en response de logout: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir la informacio del alumne", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
     }
 
     @Override

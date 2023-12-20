@@ -12,6 +12,7 @@
     <string name="obtenirAula">No s´han pogut obtenir les aules</string>
     <string name="treureAlumne">No s´ha pogut treure l\'alumne de l\'aula</string>
     <string name="obtenirAlumne">No s´ha pogut obtenir els alumnes</string>
+    <string name="informacioAlumne">No s´ha pogut obtenir la informacio de l\'alumne</string>
     <string name="Afegir">Afegir</string>
     <string name="Aceptar">Aceptar</string>
     <string name="Cancelar">Cancelar</string>

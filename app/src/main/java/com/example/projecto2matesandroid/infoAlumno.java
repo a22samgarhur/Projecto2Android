@@ -82,7 +82,7 @@ public class infoAlumno extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ItemAlumno> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "No s´ha pogut obtenir la informacio del alumne", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.informacioAlumne), Toast.LENGTH_SHORT).show();
             }
         });
 

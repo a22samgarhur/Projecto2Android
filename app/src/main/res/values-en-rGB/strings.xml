@@ -13,6 +13,7 @@
     <string name="obtenirAula">Unable to retrieve classrooms</string>
     <string name="treureAlumne">Unable to remove student from the classroom</string>
     <string name="obtenirAlumne">Unable to retrieve students</string>
+    <string name="informacioAlumne">Student information could not be obtained</string>
     <string name="Afegir">Add</string>
     <string name="Aceptar">Accept</string>
     <string name="Cancelar">Cancel</string>
