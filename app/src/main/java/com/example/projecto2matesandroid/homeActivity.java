@@ -45,7 +45,7 @@ public class homeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private static ApiServer apiServer;
     //private static final String BASE_URL = "http://10.0.2.2:3001";
-    private static final String BASE_URL = "http://math-thai.dam.inspedralbes.cat:3902";
+    private static final String BASE_URL = "http://math-thai.dam.inspedralbes.cat:3450";
     
     List<ItemHome> items = new ArrayList<ItemHome>();
 

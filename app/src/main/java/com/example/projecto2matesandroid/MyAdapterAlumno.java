@@ -54,7 +54,7 @@ public class MyAdapterAlumno extends RecyclerView.Adapter<MyViewHolderAlumno> {
         holder.nomView.setText(alumnos.get(position).getName()+" "+alumnos.get(position).getSurname());
         holder.nivellView.setText(alumnos.get(position).getEmail());
 
-        String imageUrl = "http://math-thai.dam.inspedralbes.cat:3902/imagen/"+alumnos.get(position).getImage();
+        String imageUrl = "http://math-thai.dam.inspedralbes.cat:3450/imagen/"+alumnos.get(position).getImage();
 
         // Utiliza Glide para cargar la imagen desde la URL
         Glide.with(holder.itemView.getContext())

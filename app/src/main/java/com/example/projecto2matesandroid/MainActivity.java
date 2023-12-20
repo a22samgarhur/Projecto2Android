@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private static final String BASE_URL = "http://10.0.2.2:3001";
 
-    private static final String BASE_URL = "http://math-thai.dam.inspedralbes.cat:3902";
+    private static final String BASE_URL = "http://math-thai.dam.inspedralbes.cat:3450";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
