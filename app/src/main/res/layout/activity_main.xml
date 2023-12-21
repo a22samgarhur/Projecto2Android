@@ -71,11 +71,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
+        android:onClick="loquearse"
         android:text="Entrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextContrasenya"
-        android:onClick="loquearse"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextContrasenya" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

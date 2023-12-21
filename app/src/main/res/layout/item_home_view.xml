@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:background="#a7e3c1"
+    android:background="@drawable/fondo_aulas"
     android:id="@+id/aulaLayout"
    >
     <TextView
@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="name"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:id="@+id/idAulaView"
@@ -21,13 +22,7 @@
         android:layout_below="@id/nameAulaView"
         android:text="email"
         android:textSize="20dp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/black" />
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/white"
-        android:layout_below="@id/idAulaView"
-        android:layout_marginTop="0dp"/>
 
 </RelativeLayout>

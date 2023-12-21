@@ -27,7 +27,8 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:hint="@string/Nom"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
 
 
