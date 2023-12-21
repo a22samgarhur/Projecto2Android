@@ -9,8 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="azul_flojo">#8ecae6</color>
     <color name="azul_medio">#219ebc</color>
-    <color name="azul_fuerte">#023047</color>
-    <color name="verde_fuerte">#264653</color>
+    <color name="azul_fuerte">#072541</color>
+    <color name="amarillo_suave">#FBECB2</color>
+    <color name="rosa">#FF90BC</color>
+    <color name="lila">#5272F2</color>
+
+
 
 
 </resources>

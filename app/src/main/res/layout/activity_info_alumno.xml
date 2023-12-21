@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/fondo_amarillo"
     tools:context=".infoAlumno">
 
     <androidx.appcompat.widget.Toolbar
@@ -35,20 +35,21 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:onClick="tornar"
         android:text="@string/Tornar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerviewInfoAlumeHistorial" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollViewInfoAlumno"
         android:layout_width="399dp"
-        android:layout_height="158dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="171dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/azul_medio"
+        android:background="@drawable/fondo_perfil_alumne"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,8 +99,8 @@
                 android:id="@+id/textViewInfoAlumneNivell"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="48dp"
                 android:text="Nivell"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -137,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="Historial"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -148,12 +149,11 @@
         android:id="@+id/recyclerviewInfoAlumeHistorial"
         android:layout_width="395dp"
         android:layout_height="256dp"
-        android:layout_marginTop="60dp"
-        android:background="@color/azul_medio"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/fondo_historial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollViewInfoAlumno" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
