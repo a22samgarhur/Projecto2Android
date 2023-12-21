@@ -15,7 +15,7 @@
         android:scaleType="center"
         android:text="@string/RestablirConstrasenya"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <EditText
@@ -27,7 +27,8 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:hint="@string/ConstrasenyaAntiga"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/restablirContrasenyaNova"
@@ -38,7 +39,8 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:hint="@string/ConstrasenyaNova"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
 
 
