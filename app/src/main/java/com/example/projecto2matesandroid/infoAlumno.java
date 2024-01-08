@@ -70,7 +70,7 @@ public class infoAlumno extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     alumno = response.body();
                     llenarCampos();
-                    cogerHistorial(alumno.getEmail());
+                    cogerHistorial(alumno.getEmail(),alumno.getId());
 
                 } else {
                     Log.e("Error en respuesta", "Error en response de getAlumne: " + response.message());
@@ -105,9 +105,9 @@ public class infoAlumno extends AppCompatActivity {
     }
 
     //Funcion para hacer una llamada y coger datos del historial del alumno en la BD
-    public void cogerHistorial(String email) {
+    public void cogerHistorial(String email,String id) {
 
-        EmailAlumno emailAlumno = new EmailAlumno(email);
+        EmailAlumno emailAlumno = new EmailAlumno(email, id);
         Log.e("Email alumno", "Email alumno: "+emailAlumno.getEmail());
         Call <List<ItemHistorial>> call = getApiServer().historial(emailAlumno);
 
@@ -119,12 +119,17 @@ public class infoAlumno extends AppCompatActivity {
 
                     historials=response.body();
 
+
+                    for (int i =0;i< response.body().size();i++) {
+                        Log.d("Body", "Body: " + response.body().get(i).historial +" "+response.body().get(i).hora);
+                    }
+
                     adapter = new MyAdapterHistorial(getApplicationContext(), historials);
                     recyclerViewHistorial.setAdapter(adapter);
 
-                    /*for (ItemHistorial item : historials) {
+                    for (ItemHistorial item : historials) {
                         Log.d("Historial", "Historial: " + item.getHistorial() + ", Hora: " + item.getHora());
-                    }*/
+                    }
 
                 } else {
                     Log.e("Error en respuesta", "Error en response de historial: " + response.message());

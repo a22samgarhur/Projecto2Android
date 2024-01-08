@@ -2,14 +2,15 @@ package com.example.projecto2matesandroid;
 
 public class ItemHistorial {
 
-    String hora;
     String historial;
+    String hora;
+
 
     public ItemHistorial() {
 
     }
 
-    public ItemHistorial(String Historial,String hora) {
+    public ItemHistorial(String hora,String Historial) {
         this.hora = hora;
         this.historial = Historial;
     }
