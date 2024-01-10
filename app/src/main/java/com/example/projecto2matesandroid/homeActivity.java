@@ -234,5 +234,15 @@ public class homeActivity extends AppCompatActivity {
         unregisterReceiver(aulaCreatedReceiver);
     }
 
+    public void onBackPressed() {
+        // Aquí puedes manejar el comportamiento cuando se presiona el botón de retroceso
+        // Por ejemplo, puedes iniciar la actividad principal cuando se presiona el botón de retroceso desde esta actividad
+        super.onBackPressed();
+        Intent intent = new Intent(this, homeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esto limpia el stack de actividades y asegura que MainActivity sea la única en la pila
+        startActivity(intent);
+        finish(); // Cierra la actividad actual
+    }
+
 
 }

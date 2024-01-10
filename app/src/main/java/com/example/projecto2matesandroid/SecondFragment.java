@@ -206,4 +206,8 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
     public void onDialogNegativeClick(DialogFragment dialog) {
 
     }
+    public void onBackPressed() {
+        Intent intent2 = new Intent(requireContext(), homeActivity.class);
+        startActivity(intent2);
+    }
 }
