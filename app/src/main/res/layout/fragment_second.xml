@@ -6,17 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".homeActivity">
 
+    <TextView
+        android:id="@+id/textViewAlumnosVacio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/rosa"
+        android:text="TextView"
+        android:textColor="#070707"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAlumnos"
         android:layout_width="350dp"
         android:layout_height="399dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="5dp"
         android:onClick="verAula"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAlumnosVacio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

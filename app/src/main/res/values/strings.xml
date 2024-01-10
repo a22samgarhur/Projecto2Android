@@ -6,12 +6,15 @@
     <string name="conexioServer">Error amb la conexio amb el server</string>
     <string name="Pagina_principal">Pagina Principal</string>
     <string name="Informacion_Aula">Informacio Aula</string>
+    <string name="DadesUsuari">Dades Usuari</string>
+    <string name="Historial">Historial</string>
     <string name="Nova_aula">Afegir nova aula</string>
     <string name="aulaCreada"> Aula creada correctament</string>
     <string name="errorAulaCreada">No s\'ha pogut crear l\'aula, torni a intentar</string>
     <string name="obtenirAula">No s´han pogut obtenir les aules</string>
     <string name="treureAlumne">No s´ha pogut treure l\'alumne de l\'aula</string>
     <string name="obtenirAlumne">No s´ha pogut obtenir els alumnes</string>
+    <string name="alumnesBuit">"No hi ha alumnes en aquesta aula, si us plau afegeix algun alumne. Per afegir un nou alumne comparteix el codi d'acces"</string>
     <string name="informacioAlumne">No s´ha pogut obtenir la informacio de l\'alumne</string>
     <string name="historialAlumne">No s´ha pogut obtenir l\'historial de l\'alumne</string>
     <string name="Afegir">Afegir</string>
@@ -43,6 +46,8 @@
     <string name="Quitar_alumne">Esta segur de que vols treure l\'alumne de l\'aula?</string>
     <string name="PerfilUsuari">Perfil d\'usuari</string>
     <string name="errorLogout">No s\'ha pogut tancar la sessió</string>
+
+
 
 
 

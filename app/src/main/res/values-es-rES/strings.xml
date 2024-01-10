@@ -7,12 +7,15 @@
     <string name="conexioServer">Error en la conexion con el servidor</string>
     <string name="Pagina_principal">Pagina Principal</string>
     <string name="Informacion_Aula">Informacion Aula</string>
+    <string name="DadesUsuari">Datos Usuario</string>
+    <string name="Historial">Historial</string>
     <string name="Nova_aula">Añadir nueva aula</string>
     <string name="aulaCreada"> Aula creada correctamente</string>
     <string name="errorAulaCreada">No se ha podido crear el aula, vuelva a intentarlo</string>
     <string name="obtenirAula">No se han podido obtener las aulas</string>
     <string name="treureAlumne">No se ha podido quitar el alumno de la aula</string>
     <string name="obtenirAlumne">No se han podido obtener los alumnos</string>
+    <string name="alumnesBuit">"No hay alumnos en este aula, por favor añade algún alumno. Para añadir un nuevo alumno comparte el código de acceso"</string>
     <string name="informacioAlumne">No se ha podido obtener la informacion del alumno</string>
     <string name="historialAlumne">No se ha podido obtener el historial del alumno</string>
     <string name="Afegir">Añadir</string>

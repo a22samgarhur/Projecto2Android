@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecto2matesandroid.databinding.FragmentSecondBinding;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +46,7 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
     private Context applicationContext;
     List<ItemAlumno> alumnes = new ArrayList<ItemAlumno>();
     String aulaID;
+    TextView alumnosVacio;
     public SecondFragment() {
 
     }
@@ -89,6 +93,7 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
 
         // Obtener la Toolbar de la actividad
         Toolbar toolbar = activity.findViewById(R.id.toolbar);
+        alumnosVacio=view.findViewById(R.id.textViewAlumnosVacio);
 
         // Verificar si la Toolbar se encontró correctamente antes de configurar el OnClickListener
         if (toolbar != null) {
@@ -116,11 +121,6 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
             }
         });
 
-
-
-
-
-
     }
 
     @Override
@@ -137,13 +137,22 @@ public class SecondFragment extends Fragment implements DialogQuitarAlumno.Dialo
 
                 if (response.isSuccessful() && response.body() != null) {
                     alumnes = response.body();
-
                     // Actualizar la lista de items
                     adapter.setItems(alumnes);
-
                     recyclerView.getAdapter().notifyDataSetChanged();
+
+                    // Verificar si la lista de alumnos está vacía y mostrar el mensaje correspondiente
+                    if (alumnes.isEmpty()) {
+                        alumnosVacio.setText(R.string.alumnesBuit);
+                        alumnosVacio.setVisibility(View.VISIBLE); // Mostrar el mensaje
+                    } else {
+                        alumnosVacio.setVisibility(View.GONE); // Ocultar el mensaje si hay elementos en la lista
+                    }
                 } else {
                     Log.e("Error en respuesta", "Error en response de getAlumnos: " + response.message());
+
+
+
                 }
             }
 

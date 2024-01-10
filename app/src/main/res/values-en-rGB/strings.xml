@@ -7,12 +7,15 @@
     <string name="conexioServer">Error connecting to the server</string>
     <string name="Pagina_principal">Main Page</string>
     <string name="Informacion_Aula">Classroom Information</string>
+    <string name="DadesUsuari">User data</string>
+    <string name="Historial">History</string>
     <string name="Nova_aula">Add new classroom</string>
     <string name="aulaCreada"> Classroom created successfully</string>
     <string name="errorAulaCreada">Failed to create classroom, please try again</string>
     <string name="obtenirAula">Unable to retrieve classrooms</string>
     <string name="treureAlumne">Unable to remove student from the classroom</string>
     <string name="obtenirAlumne">Unable to retrieve students</string>
+    <string name="alumnesBuit">"There are no students in this classroom, please add a student. To add a new student, share the access code"</string>
     <string name="informacioAlumne">Student information could not be obtained</string>
     <string name="historialAlumne">Could not obtain student history</string>
     <string name="Afegir">Add</string>
