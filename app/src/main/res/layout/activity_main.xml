@@ -11,8 +11,8 @@
         android:id="@+id/textViewUsuari"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="352dp"
         android:text="@string/Email"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -35,7 +35,7 @@
         android:id="@+id/editTextTextEmail"
         android:layout_width="181dp"
         android:layout_height="38dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="344dp"
         android:layout_marginEnd="72dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -59,24 +59,38 @@
         android:id="@+id/textViewLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
         android:text="LOGIN"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/buttonEntrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="10dp"
         android:onClick="loquearse"
         android:text="Entrar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextContrasenya" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextContrasenya"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="268dp"
+        android:layout_height="201dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/math_thai2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
