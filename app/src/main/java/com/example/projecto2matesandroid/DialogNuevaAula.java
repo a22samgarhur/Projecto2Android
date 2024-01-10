@@ -61,7 +61,7 @@ public class DialogNuevaAula extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        applicationContext = context.getApplicationContext();
+        applicationContext = context;
     }
 
     public void crearAula() {
@@ -76,13 +76,13 @@ public class DialogNuevaAula extends DialogFragment {
             @Override
             public void onResponse(Call<Aula> call, Response<Aula> response) {
                 //Log.e("Crear aula response", "onResponse: "+response );
-                Toast.makeText(applicationContext, getString(R.string.aulaCreada), Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, R.string.aulaCreada, Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call<Aula> call, Throwable t) {
-                Toast.makeText(applicationContext, getString(R.string.errorAulaCreada), Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, R.string.errorAulaCreada, Toast.LENGTH_SHORT).show();
             }
         });
 
