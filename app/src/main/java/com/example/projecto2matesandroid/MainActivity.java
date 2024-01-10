@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Usuari> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getString(R.string.conexioServer), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.conexioServer, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Usuari", "onResponse: "+usuariRespuesta.getEmail());
                 guardarDatos(usuariRespuesta);
                 if (usuariRespuesta.getEmail().equals("")) {
-                    Toast.makeText(getApplicationContext(),  getString(R.string.ConstrasenyaIncorrecta), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),  R.string.ConstrasenyaIncorrecta, Toast.LENGTH_SHORT).show();
 
                 } else {
                     Intent intent = new Intent(getApplicationContext(), homeActivity.class);
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Usuari> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getString(R.string.conexioServer), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.conexioServer, Toast.LENGTH_SHORT).show();
             }
         });
 

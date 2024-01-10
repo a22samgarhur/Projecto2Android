@@ -79,7 +79,7 @@ public class infoAlumno extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ItemAlumno> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getString(R.string.informacioAlumne), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.informacioAlumne, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -138,7 +138,7 @@ public class infoAlumno extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ItemHistorial>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getString(R.string.historialAlumne), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.historialAlumne, Toast.LENGTH_SHORT).show();
             }
         });
     }

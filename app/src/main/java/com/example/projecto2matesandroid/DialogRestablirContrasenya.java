@@ -97,16 +97,16 @@ public class DialogRestablirContrasenya extends DialogFragment {
                 public void onResponse(Call<actualizarConstrasenyaModel> call, Response<actualizarConstrasenyaModel> response) {
 
                     if (response.isSuccessful() && response.body() != null && !contraNova.equals("")) {
-                        Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCambiada), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(applicationContext, R.string.ConstrasenyaCambiada, Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     } else {
-                        Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(applicationContext, R.string.ConstrasenyaCoincidencia, Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<actualizarConstrasenyaModel> call, Throwable t) {
-                    Toast.makeText(applicationContext, getString(R.string.ConstrasenyaCoincidencia), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(applicationContext, R.string.ConstrasenyaCoincidencia, Toast.LENGTH_SHORT).show();
                 }
             });
 

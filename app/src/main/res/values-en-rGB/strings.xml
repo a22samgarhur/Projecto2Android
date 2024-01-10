@@ -43,4 +43,5 @@
     <string name="Rang">Rank</string>
     <string name="Quitar_alumne">Are you sure you want to remove the student from the classroom?</string>
     <string name="PerfilUsuari">User Profile</string>
+    <string name="errorLogout">The session could not be closed</string>
 </resources>

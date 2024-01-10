@@ -43,5 +43,6 @@
     <string name="Rang">Rango</string>
     <string name="Quitar_alumne">Esta seguro de que quieres quitar al alumno de la aula?</string>
     <string name="PerfilUsuari">Perfil de usuario</string>
+    <string name="errorLogout">No se pudo cerrar la sesión</string>
 
 </resources>

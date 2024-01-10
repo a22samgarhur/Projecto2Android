@@ -42,6 +42,7 @@
     <string name="Rang">Rang</string>
     <string name="Quitar_alumne">Esta segur de que vols treure l\'alumne de l\'aula?</string>
     <string name="PerfilUsuari">Perfil d\'usuari</string>
+    <string name="errorLogout">No s\'ha pogut tancar la sessió</string>
 
 
 
