@@ -120,7 +120,9 @@ public class ItemAlumno {
     }
 
     public String getLvl() {
-        return lvl;
+        int nivelint=Integer.parseInt(this.lvl)-1;
+        String nivelfinal=String.valueOf(nivelint);
+        return nivelfinal;
     }
 
     public void setLvl(String lvl) {
